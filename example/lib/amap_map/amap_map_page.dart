@@ -23,6 +23,7 @@ class _MapPageState extends State<MapPage> {
         child: AMapMapView(
           onMapViewCreate: (controller) {
             _controller = controller;
+            _controller.initMapEvent(context);
           },
           options: AMapMapOptions(
             mapType: AMapMapType.standardNight,
