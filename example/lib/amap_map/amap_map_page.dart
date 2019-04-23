@@ -23,8 +23,10 @@ class _MapPageState extends State<MapPage> {
         child: AMapMapView(
           onMapViewCreate: (controller) {
             _controller = controller;
-            _controller.initMapEvent(context);
+            _controller.initMapChannel();
           },
+          onMapStartLodingMap: () => print('onMapStartLodingMap'),
+          onMapFinishLodingMap: () => print('onMapFinishLodingMap'),
           options: AMapMapOptions(
             mapType: AMapMapType.standardNight,
             zoomLevel: 12,

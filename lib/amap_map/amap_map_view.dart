@@ -11,12 +11,20 @@ typedef void MapViewCreateCallHandler(AMapMapController controller);
 
 class AMapMapView extends StatelessWidget {
   final MapViewCreateCallHandler onMapViewCreate;
+
+  /// 地图开始加载回调
+  final MapViewWillStartLoadingMap onMapStartLodingMap;
+
+  /// 地图加载成功回调
+  final MapViewDidFinishLoadingMap onMapFinishLodingMap;
   final AMapMapOptions options;
 
   const AMapMapView({
     Key key,
     this.onMapViewCreate,
     this.options,
+    this.onMapStartLodingMap,
+    this.onMapFinishLodingMap,
   }) : super(key: key);
 
   @override
@@ -52,7 +60,14 @@ class AMapMapView extends StatelessWidget {
 
   void _onPlatformViewCreated(int viewId) {
     if (onMapViewCreate != null) {
-      onMapViewCreate(AMapMapController.viewId(viewId));
+      onMapViewCreate(AMapMapController.viewId(
+          viewId, onMapStartLodingMap, onMapFinishLodingMap));
+    }
+    if (onMapStartLodingMap != null) {
+      onMapStartLodingMap();
+    }
+    if (onMapFinishLodingMap != null) {
+      onMapFinishLodingMap();
     }
   }
 }

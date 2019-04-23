@@ -35,9 +35,10 @@ class FlutterAMapView: NSObject, FlutterPlatformView {
         
         configMapOptions()
         
-        self.methodChannel = FlutterMethodChannel(name: "\(MAP_CHANNEL_NAME)_\(viewId)", binaryMessenger: binaryMessenger)
+        self.methodChannel = FlutterMethodChannel(name: "\(MAP_CHANNEL_NAME)/\(viewId)", binaryMessenger: binaryMessenger)
         
         self.methodChannel.setMethodCallHandler {[weak self] (call: FlutterMethodCall, result:@escaping FlutterResult) in
+            print(call.method)
             if let this = self {
                 if !this.onMethodCall(call: call, result: result) {
                     result(FlutterMethodNotImplemented)
@@ -90,10 +91,12 @@ extension FlutterAMapView:MAMapViewDelegate {
     
     func mapViewWillStartLoadingMap(_ mapView: MAMapView!) {
         print("mapViewWillStartLoadingMap")
+        methodChannel.invokeMethod("mapViewWillStartLoadingMap", arguments: "start")
     }
     
     func mapViewDidFinishLoadingMap(_ mapView: MAMapView!) {
         print("mapViewDidFinishLoadingMap")
+        methodChannel.invokeMethod("mapViewDidFinishLoadingMap", arguments: "finish")
     }
     
     public func mapView(_ mapView: MAMapView!, viewFor annotation: MAAnnotation!) -> MAAnnotationView! {

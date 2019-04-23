@@ -4,23 +4,30 @@ import 'dart:async';
 
 const channelPrefix = 'plugin/amap';
 
+typedef void MapViewWillStartLoadingMap();
+typedef void MapViewDidFinishLoadingMap();
+
 class AMapMapController {
   final MethodChannel _mapChannel;
-  final EventChannel _mapEventChannel;
-  StreamSubscription _subscription;
+  final MapViewWillStartLoadingMap onMapStartLodingMap;
+  final MapViewDidFinishLoadingMap onMapFinishLodingMap;
 
-  AMapMapController.viewId(int viewId)
-      : _mapChannel = MethodChannel('$channelPrefix/map/$viewId'),
-        _mapEventChannel = EventChannel('$channelPrefix/map/event/$viewId');
+  AMapMapController.viewId(int viewId, this.onMapStartLodingMap, this.onMapFinishLodingMap)
+      : _mapChannel = MethodChannel('$channelPrefix/map/$viewId');
 
-  void dispose() {
-    _subscription.cancel();
-  }
+  void dispose() {}
 
-  void initMapEvent(BuildContext context) {
-    _subscription = _mapEventChannel.receiveBroadcastStream().listen((onData) {
-      if (onData == 'map_close') {
-        Navigator.pop(context);
+  void initMapChannel() {
+    
+    _mapChannel.setMethodCallHandler((handler) {
+      switch (handler.method) {
+        case 'mapViewWillStartLoadingMap':
+          print(handler.arguments);
+          break;
+        case 'mapViewDidFinishLoadingMap':
+          print(handler.arguments);
+          break;
+        default:
       }
     });
   }
