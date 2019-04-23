@@ -1,6 +1,5 @@
 import Flutter
 import UIKit
-import MapKit
 import AMapNaviKit
 
 public class SwiftFlutterAmapPlugin: NSObject, FlutterPlugin {
@@ -50,7 +49,14 @@ class FlutterAMapView: NSObject, FlutterPlatformView {
     func configMapOptions() {
         if mapOptions != nil {
             mapView.mapType = MAMapType(rawValue: mapOptions.mapType!)!
-            mapView.centerCoordinate = mapOptions.centerCoordinate.toCLLocationCoordinate2D()
+            mapView.isShowTraffic = mapOptions.showTraffic
+            mapView.showsScale = mapOptions.showsScale
+            mapView.showsCompass = mapOptions.showsCompass
+            mapView.showsUserLocation = mapOptions.showsUserLocation
+            mapView.userTrackingMode = MAUserTrackingMode(rawValue: mapOptions.userTrackingMode!)!
+            if mapOptions.centerCoordinate != nil {
+                mapView.centerCoordinate = mapOptions.centerCoordinate.toCLLocationCoordinate2D()
+            }
             mapView.zoomLevel = mapOptions.zoomLevel
             mapView.minZoomLevel = mapOptions.minZoomLevel
             mapView.maxZoomLevel = mapOptions.maxZoomLevel

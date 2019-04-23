@@ -17,7 +17,7 @@ class AMapMapModel: NSObject, HandyJSON {
 class MapOptions: AMapMapModel {
     
     /// 地图类型
-    var mapType:Int?
+    var mapType:Int!
     
     /// 当前地图的中心点坐标
     var centerCoordinate: Coordinate!
@@ -52,9 +52,22 @@ class MapOptions: AMapMapModel {
     ///是否支持camera旋转, 默认YES
     var rotateCameraEnabled: Bool!
     
+    ///是否显示比例尺, 默认YES
+    var showsScale: Bool!
     
+    ///是否显示用户位置
+    var showsUserLocation: Bool!
+    
+    ///是否显示指南针, 默认YES
+    var showsCompass: Bool!
+    
+    ///是否显示交通路况图层, 默认为NO
+    var showTraffic:Bool!
+    
+    ///定位用户位置的模式, 注意：在follow模式下，设置地图中心点、设置可见区域、滑动手势、选择annotation操作会取消follow模式，并触发 - (void)mapView:(MAMapView *)mapView didChangeUserTrackingMode:(MAUserTrackingMode)mode animated:(BOOL)animated;
+    var userTrackingMode: Int!
 
-    
+
 }
 
 class Coordinate: AMapMapModel {

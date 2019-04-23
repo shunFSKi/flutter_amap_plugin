@@ -26,7 +26,7 @@ class AMapMapView extends StatelessWidget {
         () => EagerGestureRecognizer(),
       ),
     ].toSet();
-
+    print(options.toJsonString());
     if (Platform.isIOS) {
       return UiKitView(
         viewType: _viewType,

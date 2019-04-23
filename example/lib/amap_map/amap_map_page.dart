@@ -26,7 +26,10 @@ class _MapPageState extends State<MapPage> {
           },
           options: AMapMapOptions(
             mapType: AMapMapType.standardNight,
-            zoomLevel: 3,
+            zoomLevel: 12,
+            showsUserLocation: true,
+            showsCompass: false,
+            showTraffic: true,
           ),
         ),
       ),
