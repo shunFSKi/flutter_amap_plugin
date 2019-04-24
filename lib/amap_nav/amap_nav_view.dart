@@ -1,30 +1,30 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'dart:io';
-import 'package:flutter/foundation.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import './amap_map_controller.dart';
-import './amap_map_options.dart';
+import './amap_nav_controller.dart';
+import './amap_nav_options.dart';
 
-const _viewType = 'plugin/amap/map';
-typedef void MapViewCreateCallHandler(AMapMapController controller);
+const _viewType = 'plugin/amap/nav';
+typedef void NavViewCreateCallHandler(AMapNavController controller);
 
-class AMapMapView extends StatelessWidget {
-  final MapViewCreateCallHandler onMapViewCreate;
+class AMapNavView extends StatelessWidget {
+  final NavViewCreateCallHandler onNavViewCreate;
+  final AMapNavOptions options;
 
-  /// 地图开始加载回调
-  final MapViewWillStartLoadingMap onMapStartLodingMap;
+  /// 使用此回调会拦截返回事件，需要自己实现pop
+  final NavCloseHandler onCloseHandler;
+  final NavMoreHandler onMoreHandler;
 
-  /// 地图加载成功回调
-  final MapViewDidFinishLoadingMap onMapFinishLodingMap;
-  final AMapMapOptions options;
-
-  const AMapMapView({
+  const AMapNavView({
     Key key,
-    this.onMapViewCreate,
+    this.onNavViewCreate,
     this.options,
-    this.onMapStartLodingMap,
-    this.onMapFinishLodingMap,
+    this.onCloseHandler,
+    this.onMoreHandler,
   }) : super(key: key);
 
   @override
@@ -34,7 +34,7 @@ class AMapMapView extends StatelessWidget {
         () => EagerGestureRecognizer(),
       ),
     ].toSet();
-    
+
     if (Platform.isIOS) {
       return UiKitView(
         viewType: _viewType,
@@ -59,12 +59,13 @@ class AMapMapView extends StatelessWidget {
   }
 
   void _onPlatformViewCreated(int viewId) {
-    if (onMapViewCreate != null) {
-      onMapViewCreate(AMapMapController.viewId(
-        viewId: viewId,
-        onMapStartLodingMap: onMapStartLodingMap,
-        onMapFinishLodingMap: onMapFinishLodingMap,
-      ));
+    var _controller = AMapNavController.viewId(
+      viewId: viewId,
+      onCloseHandler: onCloseHandler,
+      onMoreHandler: onMoreHandler,
+    );
+    if (onNavViewCreate != null) {
+      onNavViewCreate(_controller);
     }
   }
 }

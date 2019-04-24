@@ -4,6 +4,7 @@
 
 static NSString *AMAP_BASE_CHANNEL = @"plugin/base/init";
 static NSString *AMAP_MAP_CHANNEL = @"plugin/amap/map";
+static NSString *AMAP_NAV_CHANNEL = @"plugin/amap/nav";
 @implementation FlutterAmapPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
   [SwiftFlutterAmapPlugin registerWithRegistrar:registrar];
@@ -13,6 +14,9 @@ static NSString *AMAP_MAP_CHANNEL = @"plugin/amap/map";
     
     FlutterAMapViewFactory *mapFactory = [[FlutterAMapViewFactory alloc]initWithMessenger:[registrar messenger]];
     [registrar registerViewFactory:mapFactory withId:AMAP_MAP_CHANNEL];
+    
+    FlutterAMapNavFactory *navFactory = [[FlutterAMapNavFactory alloc]initWithMessenger:[registrar messenger]];
+    [registrar registerViewFactory:navFactory withId:AMAP_NAV_CHANNEL];
     
 }
 

@@ -25,8 +25,12 @@ class _MapPageState extends State<MapPage> {
             _controller = controller;
             _controller.initMapChannel();
           },
-          onMapStartLodingMap: () => print('onMapStartLodingMap'),
-          onMapFinishLodingMap: () => print('onMapFinishLodingMap'),
+          onMapStartLodingMap: () {
+            print('onMapStartLodingMap');
+          },
+          onMapFinishLodingMap: () {
+            print('onMapFinishLodingMap');
+          },
           options: AMapMapOptions(
             mapType: AMapMapType.standardNight,
             zoomLevel: 12,

@@ -1,4 +1,5 @@
 import '../model/amap_base_model.dart';
+import '../common/coordinate.dart';
 
 class AMapMapType {
   ///< 普通地图
@@ -130,17 +131,4 @@ class AMapMapOptions extends AMapBaseModel {
   }
 }
 
-class Coordinate extends AMapBaseModel {
-  final double latitude;
-  final double longitude;
 
-  Coordinate(this.latitude, this.longitude);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return {
-      'latitude': latitude,
-      'longitude': longitude,
-    };
-  }
-}

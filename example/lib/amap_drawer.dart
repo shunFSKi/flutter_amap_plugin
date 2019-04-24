@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './amap_map/amap_map_page.dart';
+import './amap_map/amap_nav_page.dart';
 
 class AMapDrawer extends StatelessWidget {
   @override
@@ -22,6 +23,15 @@ class AMapDrawer extends StatelessWidget {
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) {
                       return MapPage(title: '地图展示',);
+                    }));
+              },
+            ),
+            ListTile(
+              title: Text('导航展示'),
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) {
+                      return NavPage(title: '导航展示',);
                     }));
               },
             )

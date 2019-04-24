@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:async';
 
-const channelPrefix = 'plugin/amap';
+const _mapChannelPrefix = 'plugin/amap/map';
 
 typedef void MapViewWillStartLoadingMap();
 typedef void MapViewDidFinishLoadingMap();
@@ -12,20 +12,26 @@ class AMapMapController {
   final MapViewWillStartLoadingMap onMapStartLodingMap;
   final MapViewDidFinishLoadingMap onMapFinishLodingMap;
 
-  AMapMapController.viewId(int viewId, this.onMapStartLodingMap, this.onMapFinishLodingMap)
-      : _mapChannel = MethodChannel('$channelPrefix/map/$viewId');
+  AMapMapController.viewId({
+    @required int viewId,
+    this.onMapStartLodingMap,
+    this.onMapFinishLodingMap,
+  }) : _mapChannel = MethodChannel('$_mapChannelPrefix/$viewId');
 
   void dispose() {}
 
   void initMapChannel() {
-    
     _mapChannel.setMethodCallHandler((handler) {
       switch (handler.method) {
         case 'mapViewWillStartLoadingMap':
-          print(handler.arguments);
+          if (onMapStartLodingMap != null) {
+            onMapStartLodingMap();
+          }
           break;
         case 'mapViewDidFinishLoadingMap':
-          print(handler.arguments);
+          if (onMapFinishLodingMap != null) {
+            onMapFinishLodingMap();
+          }
           break;
         default:
       }
