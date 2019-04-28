@@ -1,21 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:async';
+import '../amap_annotation/amap_annotation_options.dart';
+import '../common/coordinate.dart';
 
 const _mapChannelPrefix = 'plugin/amap/map';
 
 typedef void MapViewWillStartLoadingMap();
 typedef void MapViewDidFinishLoadingMap();
+typedef void MapAnnotationTap(int index);
 
 class AMapMapController {
   final MethodChannel _mapChannel;
   final MapViewWillStartLoadingMap onMapStartLodingMap;
   final MapViewDidFinishLoadingMap onMapFinishLodingMap;
+  final MapAnnotationTap onMapAnnotationTap;
 
   AMapMapController.viewId({
     @required int viewId,
     this.onMapStartLodingMap,
     this.onMapFinishLodingMap,
+    this.onMapAnnotationTap,
   }) : _mapChannel = MethodChannel('$_mapChannelPrefix/$viewId');
 
   void dispose() {}
@@ -33,8 +38,19 @@ class AMapMapController {
             onMapFinishLodingMap();
           }
           break;
+        case 'annotation_tap':
+          if (onMapAnnotationTap != null) {
+            onMapAnnotationTap(handler.arguments['tapIndex']);
+          }
+          break;
         default:
       }
     });
+  }
+
+  Future addAnnotation({
+    @required AMapAnnotationOptions options,
+  }) {
+    return _mapChannel.invokeMethod('annotation_add', options.toJsonString());
   }
 }

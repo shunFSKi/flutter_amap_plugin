@@ -17,6 +17,9 @@ class AMapMapView extends StatelessWidget {
 
   /// 地图加载成功回调
   final MapViewDidFinishLoadingMap onMapFinishLodingMap;
+
+  /// 标记视图点击回调
+  final MapAnnotationTap onMapAnnotationTap;
   final AMapMapOptions options;
 
   const AMapMapView({
@@ -25,6 +28,7 @@ class AMapMapView extends StatelessWidget {
     this.options,
     this.onMapStartLodingMap,
     this.onMapFinishLodingMap,
+    this.onMapAnnotationTap,
   }) : super(key: key);
 
   @override
@@ -34,7 +38,7 @@ class AMapMapView extends StatelessWidget {
         () => EagerGestureRecognizer(),
       ),
     ].toSet();
-    
+
     if (Platform.isIOS) {
       return UiKitView(
         viewType: _viewType,
@@ -64,6 +68,7 @@ class AMapMapView extends StatelessWidget {
         viewId: viewId,
         onMapStartLodingMap: onMapStartLodingMap,
         onMapFinishLodingMap: onMapFinishLodingMap,
+        onMapAnnotationTap: onMapAnnotationTap,
       ));
     }
   }

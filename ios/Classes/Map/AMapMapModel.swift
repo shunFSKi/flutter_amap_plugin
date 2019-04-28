@@ -67,6 +67,45 @@ class MapOptions: AMapMapModel {
     ///定位用户位置的模式, 注意：在follow模式下，设置地图中心点、设置可见区域、滑动手势、选择annotation操作会取消follow模式，并触发 - (void)mapView:(MAMapView *)mapView didChangeUserTrackingMode:(MAUserTrackingMode)mode animated:(BOOL)animated;
     var userTrackingMode: Int!
 
+}
+
+class AnnotationOptions: AMapMapModel {
+    
+    ///默认为YES,当为NO时view忽略触摸事件
+    var enabled: Bool!
+    
+    ///是否高亮
+    var highlighted: Bool!
+    
+    ///设置是否处于选中状态, 外部如果要选中请使用mapView的selectAnnotation方法
+    var selected: Bool!
+    
+    ///是否允许弹出callout
+    var canShowCallout: Bool!
+    
+    ///是否支持拖动
+    var draggable: Bool!
+    
+    /// 坐标集合
+    var annotationCoordinates: Array<AMapAnnotationModel>!
+    
+    var annotationIcon:String!
+    
+
+}
+
+class AMapAnnotationModel: AMapMapModel {
+    /// 坐标
+    var coordinate : Coordinate!
+    
+    /// 标题
+    var title : String!
+    
+    /// 副标题
+    var subTitle : String!
+    
+    /// 自定义的标记图标，默认大头针样式
+    var annotationIcon : String!
 
 }
 

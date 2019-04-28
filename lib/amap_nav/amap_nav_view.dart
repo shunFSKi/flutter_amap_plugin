@@ -42,6 +42,7 @@ class AMapNavView extends StatelessWidget {
         creationParamsCodec: StandardMessageCodec(),
         creationParams: options == null ? options : options.toJsonString(),
         onPlatformViewCreated: _onPlatformViewCreated,
+        hitTestBehavior: PlatformViewHitTestBehavior.translucent,
       );
     } else if (Platform.isAndroid) {
       return AndroidView(

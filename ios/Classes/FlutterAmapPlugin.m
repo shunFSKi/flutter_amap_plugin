@@ -2,12 +2,15 @@
 #import <flutter_amap_plugin/flutter_amap_plugin-Swift.h>
 #import <AMapFoundationKit/AMapFoundationKit.h>
 
+static NSObject<FlutterPluginRegistrar> * _registar;
+
 static NSString *AMAP_BASE_CHANNEL = @"plugin/base/init";
 static NSString *AMAP_MAP_CHANNEL = @"plugin/amap/map";
 static NSString *AMAP_NAV_CHANNEL = @"plugin/amap/nav";
 @implementation FlutterAmapPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
   [SwiftFlutterAmapPlugin registerWithRegistrar:registrar];
+    _registar = registrar;
     
     [AMapServices sharedServices].enableHTTPS = YES;
     [FlutterAmapPlugin setChannel:registrar];
@@ -34,5 +37,9 @@ static NSString *AMAP_NAV_CHANNEL = @"plugin/amap/nav";
             result(FlutterMethodNotImplemented);
         }
     }];
+}
+
++ (NSObject<FlutterPluginRegistrar> *) registar {
+    return _registar;
 }
 @end

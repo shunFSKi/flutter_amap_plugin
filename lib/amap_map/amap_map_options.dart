@@ -84,11 +84,11 @@ class AMapMapOptions extends AMapBaseModel {
 
   AMapMapOptions({
     this.mapType = AMapMapType.standard,
-    this.zoomLevel = 15,
+    this.zoomLevel = 10.0,
     this.centerCoordinate,
     // = const Coordinate(39.8994731, 116.4142794),
-    this.minZoomLevel = 3,
-    this.maxZoomLevel = 19,
+    this.minZoomLevel = 3.0,
+    this.maxZoomLevel = 19.0,
     this.rotationDegree = 0.0,
     this.cameraDegree = 0.0,
     this.zoomingInPivotsAroundAnchorPoint = true,
