@@ -75,7 +75,7 @@ class FlutterAMapView: NSObject, FlutterPlatformView {
             annotationView!.canShowCallout = annoOptions.canShowCallout
             annotationView!.isDraggable = annoOptions.draggable
             if annoOptions.annotationIcon != nil {
-                let image = UIImage.init(contentsOfFile: PluginAssets.defaultAssestPath(asset: annoOptions.annotationIcon))
+                let image = UIImage.init(contentsOfFile: PluginAssets.assetPath(asset: annoOptions.annotationIcon))
                 
                 annotationView.image = image
             }
@@ -146,7 +146,7 @@ extension FlutterAMapView:MAMapViewDelegate {
             
             if let index = annotations.firstIndex(of: annotation as! MAPointAnnotation) {
                 if annoOptions.annotationCoordinates[index].annotationIcon != nil {
-                    if let image = UIImage.init(contentsOfFile: PluginAssets.defaultAssestPath(asset: annoOptions.annotationCoordinates[index].annotationIcon)) {
+                    if let image = UIImage.init(contentsOfFile: PluginAssets.assetPath(asset: annoOptions.annotationCoordinates[index].annotationIcon)) {
                         annotationView?.image = image
                     }
                 }

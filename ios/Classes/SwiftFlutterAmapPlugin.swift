@@ -15,8 +15,13 @@ public class SwiftFlutterAmapPlugin: NSObject, FlutterPlugin {
 
 public class PluginAssets : NSObject {
     
-    static func defaultAssestPath(asset: String) -> String {
+    static func defaultAssetPath(asset: String) -> String {
         let key = FlutterAmapPlugin.registar()?.lookupKey(forAsset: asset, fromPackage: "flutter_amap_plugin")
+        return Bundle.main.path(forResource: key, ofType: nil) ?? ""
+    }
+    
+    static func assetPath(asset: String) -> String {
+        let key = FlutterAmapPlugin.registar()?.lookupKey(forAsset: asset)
         return Bundle.main.path(forResource: key, ofType: nil) ?? ""
     }
 }

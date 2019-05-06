@@ -15,6 +15,7 @@ import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
 import com.google.gson.Gson;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -201,7 +202,7 @@ public class FlutterAMapView implements PlatformView, MethodChannel.MethodCallHa
         mapView.onDestroy();
     }
 
-    private void initAnnotations() {
+    private void initAnnotations() throws IOException {
         if (aMap == null) {
             aMap = mapView.getMap();
         }
@@ -214,7 +215,7 @@ public class FlutterAMapView implements PlatformView, MethodChannel.MethodCallHa
                     .title(coor.title)
                     .snippet(coor.subTitle);
             if (coor.annotationIcon != null) {
-                markerOption.icon(PluginAssets.defaultAssestPath(coor.annotationIcon));
+                markerOption.icon(PluginAssets.asserpath(coor.annotationIcon));
             }
             this.annotations.add(markerOption);
         }
@@ -238,7 +239,11 @@ public class FlutterAMapView implements PlatformView, MethodChannel.MethodCallHa
     @Override
     public void onMapLoaded() {
         if (addAnnotitons) {
-            initAnnotations();
+            try {
+                initAnnotations();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
