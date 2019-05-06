@@ -32,3 +32,11 @@ android {
         disable 'InvalidPackage'
     }
 }
+
+dependencies {
+    implementation 'com.amap.api:navi-3dmap:6.5.0_3dmap6.5.0'
+    implementation 'com.amap.api:search:6.5.0.1'
+    implementation 'com.amap.api:location:4.4.0'
+    implementation 'com.google.code.gson:gson:2.2.4'
+    implementation 'com.mylhyl:acp:1.2.0'
+}

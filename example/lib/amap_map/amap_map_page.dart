@@ -15,7 +15,7 @@ class _MapPageState extends State<MapPage> {
   var _annotations = [
     AMapAnnotationModel(
       coordinate: Coordinate(39.992520, 116.336170),
-      title: '111',
+      title: '111222222222',
       subTitle: 'sub111',
       annotationIcon: 'images/default_marker.png',
     ),
@@ -82,6 +82,8 @@ class _MapPageState extends State<MapPage> {
             showsUserLocation: true,
             showsCompass: false,
             showTraffic: true,
+            showsScale: false,
+            zoomEnabled: false,
             userTrackingMode: AMapUserTrackingMode.follow,
           ),
         ),

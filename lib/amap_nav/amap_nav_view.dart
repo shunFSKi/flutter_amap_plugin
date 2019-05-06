@@ -40,7 +40,7 @@ class AMapNavView extends StatelessWidget {
         viewType: _viewType,
         gestureRecognizers: gestureRecognizers,
         creationParamsCodec: StandardMessageCodec(),
-        creationParams: options == null ? options : options.toJsonString(),
+        creationParams: options == null ? AMapNavOptions().toJsonString() : options.toJsonString(),
         onPlatformViewCreated: _onPlatformViewCreated,
         hitTestBehavior: PlatformViewHitTestBehavior.translucent,
       );
@@ -49,7 +49,7 @@ class AMapNavView extends StatelessWidget {
         viewType: _viewType,
         gestureRecognizers: gestureRecognizers,
         creationParamsCodec: StandardMessageCodec(),
-        creationParams: options == null ? options : options.toJsonString(),
+        creationParams: options == null ? AMapNavOptions().toJsonString() : options.toJsonString(),
         onPlatformViewCreated: _onPlatformViewCreated,
       );
     } else {
