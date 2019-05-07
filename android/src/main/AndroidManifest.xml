@@ -24,6 +24,8 @@
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"></uses-permission>
     <!--这个权限用于允许程序在手机屏幕关闭后后台进程仍然运行-->
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application>
         <service android:name="com.amap.api.location.APSService"></service>

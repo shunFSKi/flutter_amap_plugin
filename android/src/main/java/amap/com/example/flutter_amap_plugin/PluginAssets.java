@@ -9,15 +9,17 @@ import com.amap.api.maps.model.BitmapDescriptorFactory;
 
 import java.io.IOException;
 
+import static amap.com.example.flutter_amap_plugin.FlutterAmapPlugin.registrar;
+
 public class PluginAssets {
-    private static AssetManager assetManager = FlutterAmapPlugin.registrar.context().getAssets();
+    private static AssetManager assetManager = registrar.context().getAssets();
 
     public static BitmapDescriptor defaultAssetPath(String asset) {
-        return BitmapDescriptorFactory.fromAsset(FlutterAmapPlugin.registrar.lookupKeyForAsset(asset, "flutter_amap_plugin"));
+        return BitmapDescriptorFactory.fromAsset(registrar.lookupKeyForAsset(asset, "flutter_amap_plugin"));
     }
 
-    public static BitmapDescriptor asserpath(String asset) throws IOException {
-        AssetFileDescriptor assetFileDescriptor = PluginAssets.assetManager.openFd(FlutterAmapPlugin.registrar.lookupKeyForAsset(asset));
+    public static BitmapDescriptor assetpath(String asset) throws IOException {
+        AssetFileDescriptor assetFileDescriptor = PluginAssets.assetManager.openFd(registrar.lookupKeyForAsset(asset));
         return BitmapDescriptorFactory.fromBitmap(BitmapFactory.decodeStream(assetFileDescriptor.createInputStream()));
     }
 }
