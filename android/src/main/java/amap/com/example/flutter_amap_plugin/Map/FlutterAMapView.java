@@ -216,6 +216,10 @@ public class FlutterAMapView implements PlatformView, MethodChannel.MethodCallHa
                     .snippet(coor.subTitle);
             if (coor.annotationIcon != null) {
                 markerOption.icon(PluginAssets.assetpath(coor.annotationIcon));
+            } else {
+                if (this.annotationOptions.annotationIcon != null) {
+                    markerOption.icon(PluginAssets.assetpath(this.annotationOptions.annotationIcon));
+                }
             }
             this.annotations.add(markerOption);
         }
