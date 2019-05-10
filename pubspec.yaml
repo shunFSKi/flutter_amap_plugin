@@ -1,8 +1,8 @@
 name: flutter_amap_plugin
-description: AMap common plugin.
+description: A Flutter plugin that provides a AMap Maps widget.Base on PlatformView.
 version: 0.0.1
-author:
-homepage:
+author: fengshun_ios@126.com
+homepage: https://github.com/shunFSKi/flutter_amap_plugin
 
 environment:
   sdk: ">=2.0.0 <3.0.0"

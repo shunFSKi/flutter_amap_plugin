@@ -35,7 +35,7 @@ class _MapPageState extends State<MapPage> {
       coordinate: Coordinate(31.712799, 117.168188),
       title: '111',
       subTitle: 'sub111',
-      annotationIcon: 'images/amap_start.png',
+      annotationIcon: 'images/default_marker.png',
     ),
   ];
 
@@ -83,7 +83,7 @@ class _MapPageState extends State<MapPage> {
             showsCompass: false,
             showTraffic: true,
             showsScale: false,
-            zoomEnabled: false,
+            zoomEnabled: true,
             userTrackingMode: AMapUserTrackingMode.follow,
           ),
         ),
