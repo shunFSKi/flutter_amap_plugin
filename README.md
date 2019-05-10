@@ -100,6 +100,6 @@ Android：
 ```
 
 ## Preview
-![](example/IMG_0182.png)
-![](example/IMG_0184.png)
+![](./example/IMG_0182.png)
+![](./example/IMG_0184.png)
 
