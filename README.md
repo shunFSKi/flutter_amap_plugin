@@ -100,6 +100,6 @@ Android：
 ```
 
 ## Preview
-![](example/IMG_0182.png)
-![](example/IMG_0184.png)
+![](https://github.com/shunFSKi/flutter_amap_plugin/blob/master/example/IMG_0182.PNG)
+![](https://github.com/shunFSKi/flutter_amap_plugin/blob/master/example/IMG_0184.PNG)
 

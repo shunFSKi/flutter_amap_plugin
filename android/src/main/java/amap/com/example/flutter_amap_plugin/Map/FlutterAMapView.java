@@ -10,6 +10,7 @@ import com.amap.api.maps.AMap;
 import com.amap.api.maps.AMapOptions;
 import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.TextureMapView;
+import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
@@ -53,6 +54,7 @@ public class FlutterAMapView implements PlatformView, MethodChannel.MethodCallHa
     private ArrayList<MarkerOptions> annotations = new ArrayList<MarkerOptions>();
     private AnnotationOptions annotationOptions;
     private boolean addAnnotitons = false;
+    private ArrayList<LatLng> positions = new ArrayList<>();
 
     public FlutterAMapView(Context context, AtomicInteger atomicInteger, PluginRegistry.Registrar registrar, int id, AMapMapModel model) {
         this.context = context;
@@ -222,6 +224,7 @@ public class FlutterAMapView implements PlatformView, MethodChannel.MethodCallHa
                 }
             }
             this.annotations.add(markerOption);
+            this.positions.add(coor.coordinate.toLatLng());
         }
         aMap.addMarkers(this.annotations, true);
     }
@@ -232,12 +235,11 @@ public class FlutterAMapView implements PlatformView, MethodChannel.MethodCallHa
     @Override
     public void onInfoWindowClick(Marker marker) {
         Map<String, Integer> arg = new HashMap<>();
-        List<Marker> markers = aMap.getMapScreenMarkers();
-        int index = markers.indexOf(marker);
-        if (index > 0) {
+        int index = this.positions.indexOf(marker.getPosition());
+//        if (index > 0) {
             arg.put("tapIndex",index);
             mapChannel.invokeMethod("annotation_tap", arg);
-        }
+//        }
     }
 
     @Override

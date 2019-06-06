@@ -12,6 +12,9 @@ import com.mylhyl.acp.AcpOptions;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import amap.com.example.flutter_amap_plugin.Location.FlutterAMapLocationRegister;
+import amap.com.example.flutter_amap_plugin.Location.FlutterAMapStartLocation;
+import amap.com.example.flutter_amap_plugin.Location.FlutterAMapStopLocation;
 import amap.com.example.flutter_amap_plugin.Map.FlutterAMapView;
 import amap.com.example.flutter_amap_plugin.Map.FlutterAMapViewFactory;
 import amap.com.example.flutter_amap_plugin.Nav.FlutterAMapNavFactory;
@@ -23,12 +26,20 @@ import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
 
-/** FlutterAmapPlugin */
+import static amap.com.example.flutter_amap_plugin.Location.FlutterAMapLocationRegister.LOCATION_CHANNEL_NAME;
+
+/**
+ * FlutterAmapPlugin
+ */
 public class FlutterAmapPlugin implements MethodCallHandler {
-    /** Plugin registration. */
+    /**
+     * Plugin registration.
+     */
 
     public static final String MAP_BASE_CHANNEL = "plugin/base/init";
+
     public static Registrar registrar;
+    public static MethodChannel locChannel;
     // 当前Activity环境
     private static FlutterActivity root;
     public static final int CREATED = 1;
@@ -117,6 +128,10 @@ public class FlutterAmapPlugin implements MethodCallHandler {
         final MethodChannel channel = new MethodChannel(registrar.messenger(), MAP_BASE_CHANNEL);
         channel.setMethodCallHandler(new FlutterAmapPlugin((FlutterActivity) registrar.activity()));
 
+        final MethodChannel locChannel = new MethodChannel(registrar.messenger(), LOCATION_CHANNEL_NAME);
+        locChannel.setMethodCallHandler(new FlutterAmapPlugin((FlutterActivity) registrar.activity()));
+        FlutterAmapPlugin.locChannel = locChannel;
+
         final FlutterAmapPlugin plugin = new FlutterAmapPlugin(root);
 
         registrar.platformViewRegistry().registerViewFactory(FlutterAMapView.MAP_CHANNEL_NAME,
@@ -131,6 +146,12 @@ public class FlutterAmapPlugin implements MethodCallHandler {
             result.success("Android " + android.os.Build.VERSION.RELEASE);
         } else if (call.method.equals("initKey")) {
             result.success("init");
+        } else if (call.method.equals("initLocation")) {
+            new FlutterAMapLocationRegister().onMethodCall(call, result);
+        } else if (call.method.equals("startSingleLocation")) {
+            new FlutterAMapStartLocation().onMethodCall(call, result);
+        } else if (call.method.equals("stopLocation")) {
+            new FlutterAMapStopLocation().onMethodCall(call, result);
         } else {
             result.notImplemented();
         }

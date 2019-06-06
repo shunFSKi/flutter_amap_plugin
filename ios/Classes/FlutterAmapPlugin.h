@@ -3,5 +3,5 @@
 @interface FlutterAmapPlugin : NSObject<FlutterPlugin>
 
 + (NSObject<FlutterPluginRegistrar> *) registar;
-
++ (FlutterMethodChannel *)locationChannel;
 @end

@@ -15,25 +15,25 @@ class _MapPageState extends State<MapPage> {
   var _annotations = [
     AMapAnnotationModel(
       coordinate: Coordinate(39.992520, 116.336170),
-      title: '111222222222',
+      title: '11111',
       subTitle: 'sub111',
       annotationIcon: 'images/default_marker.png',
     ),
     AMapAnnotationModel(
       coordinate: Coordinate(39.998293, 116.348904),
-      title: '111',
+      title: '22222',
       subTitle: 'sub111',
       annotationIcon: 'images/amap_start.png',
     ),
     AMapAnnotationModel(
       coordinate: Coordinate(40.004087, 116.353915),
-      title: '111',
+      title: '33333',
       subTitle: 'sub111',
       annotationIcon: 'images/default_marker.png',
     ),
     AMapAnnotationModel(
       coordinate: Coordinate(31.712799, 117.168188),
-      title: '111',
+      title: '44444',
       subTitle: 'sub111',
       annotationIcon: 'images/default_marker.png',
     ),
