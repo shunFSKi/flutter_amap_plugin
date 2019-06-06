@@ -1,6 +1,6 @@
 name: flutter_amap_plugin
 description: A Flutter plugin that provides a AMap Maps widget.Base on PlatformView.
-version: 0.0.1
+version: 0.0.2
 author: shunFSKi <fengshun_ios@126.com>
 homepage: https://github.com/shunFSKi/flutter_amap_plugin
 
