@@ -16,7 +16,7 @@ PODS:
   - HandyJSON (5.0.0-beta.1)
 
 DEPENDENCIES:
-  - Flutter (from `.symlinks/flutter/ios`)
+  - Flutter (from `.symlinks/flutter/ios-release`)
   - flutter_amap_plugin (from `.symlinks/plugins/flutter_amap_plugin/ios`)
 
 SPEC REPOS:
@@ -29,7 +29,7 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   Flutter:
-    :path: ".symlinks/flutter/ios"
+    :path: ".symlinks/flutter/ios-release"
   flutter_amap_plugin:
     :path: ".symlinks/plugins/flutter_amap_plugin/ios"
 

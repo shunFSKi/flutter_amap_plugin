@@ -10,6 +10,8 @@ export './amap_nav/amap_nav_controller.dart';
 export './common/coordinate.dart';
 export './amap_annotation/amap_annotation_options.dart';
 export './amap_nav/amap_nav_options.dart';
+export 'amap_location/amap_location_controller.dart';
+export 'amap_location/amap_location_options.dart';
 
 class FlutterAmapPlugin {
   static const MethodChannel _channel = const MethodChannel('plugin/base/init');

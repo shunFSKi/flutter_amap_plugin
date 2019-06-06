@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:async';
 import '../amap_annotation/amap_annotation_options.dart';
-import '../common/coordinate.dart';
 
 const _mapChannelPrefix = 'plugin/amap/map';
 
