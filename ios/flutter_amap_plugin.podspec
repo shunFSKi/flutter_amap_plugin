@@ -17,6 +17,7 @@ AMap common plugin.
   s.dependency 'Flutter'
   s.dependency 'AMapNavi-NO-IDFA', '6.7.0'
   s.dependency 'AMapLocation-NO-IDFA', '2.6.2'
+  s.dependency 'AMapSearch-NO-IDFA', '6.6.0'
   s.dependency 'HandyJSON', '5.0.0-beta.1'
   
   s.static_framework = true

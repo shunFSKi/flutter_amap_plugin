@@ -51,6 +51,17 @@ class AMapDrawer extends StatelessWidget {
                 }));
               },
             ),
+            ListTile(
+              title: Text('路线规划'),
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) {
+                  return LocationPage(
+                    title: '获取单次定位',
+                  );
+                }));
+              },
+            ),
           ],
         )),
       ),

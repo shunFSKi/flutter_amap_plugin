@@ -1,14 +1,16 @@
 #import "FlutterAmapPlugin.h"
 #import <flutter_amap_plugin/flutter_amap_plugin-Swift.h>
 #import <AMapFoundationKit/AMapFoundationKit.h>
+#import <AMapSearchKit/AMapSearchKit.h>
 
 static NSObject <FlutterPluginRegistrar> *_registar;
-static FlutterMethodChannel * _locChannel;
+static FlutterMethodChannel *_locChannel;
 
 static NSString *AMAP_BASE_CHANNEL = @"plugin/base/init";
 static NSString *AMAP_MAP_CHANNEL = @"plugin/amap/map";
 static NSString *AMAP_NAV_CHANNEL = @"plugin/amap/nav";
 static NSString *AMAP_LOCATION_CHANNEL = @"plugin/amap/location";
+static NSString *AMAP_SEARCH_ROUTE_CHANNEL = @"plugin/amap/search/route";
 
 @implementation FlutterAmapPlugin
 + (void)registerWithRegistrar:(NSObject <FlutterPluginRegistrar> *)registrar {
@@ -38,6 +40,7 @@ static NSString *AMAP_LOCATION_CHANNEL = @"plugin/amap/location";
         }
     }];
 
+    //定位
     FlutterMethodChannel *locationChannel = [FlutterMethodChannel methodChannelWithName:AMAP_LOCATION_CHANNEL binaryMessenger:[registar messenger]];
     _locChannel = locationChannel;
     [locationChannel setMethodCallHandler:^(FlutterMethodCall *call, FlutterResult result) {
@@ -48,11 +51,23 @@ static NSString *AMAP_LOCATION_CHANNEL = @"plugin/amap/location";
             FlutterAMapStopLocation *stopLocation = [[FlutterAMapStopLocation alloc] init];
             [stopLocation onMethodWithCall:call result:result];
         } else if ([call.method isEqualToString:@"initLocation"]) {
-            [[FlutterAMapLocation alloc]init];
+            [[FlutterAMapLocation alloc] init];
         } else {
             result(FlutterMethodNotImplemented);
         }
     }];
+
+    //路线规划
+    FlutterMethodChannel *routeChannel = [FlutterMethodChannel methodChannelWithName:AMAP_SEARCH_ROUTE_CHANNEL binaryMessenger:[registar messenger]];
+    [routeChannel setMethodCallHandler:^(FlutterMethodCall *call, FlutterResult result) {
+        if ([call.method isEqualToString:@"startRoutePlanning"]) {
+            FlutterAMapRoutePlan *routePlan = [[FlutterAMapRoutePlan alloc] init];
+            [routePlan onMethodWithCall:call result:result];
+        } else {
+            result(FlutterMethodNotImplemented);
+        }
+    }];
+
 }
 
 + (NSObject <FlutterPluginRegistrar> *)registar {
