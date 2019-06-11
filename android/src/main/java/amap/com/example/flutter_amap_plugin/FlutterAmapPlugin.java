@@ -19,6 +19,7 @@ import amap.com.example.flutter_amap_plugin.Map.FlutterAMapView;
 import amap.com.example.flutter_amap_plugin.Map.FlutterAMapViewFactory;
 import amap.com.example.flutter_amap_plugin.Nav.FlutterAMapNavFactory;
 import amap.com.example.flutter_amap_plugin.Nav.FlutterAMapNavView;
+import amap.com.example.flutter_amap_plugin.Search.FlutterAMapSearchRegister;
 import io.flutter.app.FlutterActivity;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
@@ -27,6 +28,7 @@ import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
 
 import static amap.com.example.flutter_amap_plugin.Location.FlutterAMapLocationRegister.LOCATION_CHANNEL_NAME;
+import static amap.com.example.flutter_amap_plugin.Search.FlutterAMapSearchRegister.SEARCH_ROUTE_CHANNEL_NAME;
 
 /**
  * FlutterAmapPlugin
@@ -40,6 +42,7 @@ public class FlutterAmapPlugin implements MethodCallHandler {
 
     public static Registrar registrar;
     public static MethodChannel locChannel;
+    public static MethodChannel routeChannel;
     // 当前Activity环境
     private static FlutterActivity root;
     public static final int CREATED = 1;
@@ -132,6 +135,10 @@ public class FlutterAmapPlugin implements MethodCallHandler {
         locChannel.setMethodCallHandler(new FlutterAmapPlugin((FlutterActivity) registrar.activity()));
         FlutterAmapPlugin.locChannel = locChannel;
 
+        final MethodChannel routeChannel = new MethodChannel(registrar.messenger(), SEARCH_ROUTE_CHANNEL_NAME);
+        routeChannel.setMethodCallHandler(new FlutterAmapPlugin((FlutterActivity) registrar.activity()));
+        FlutterAmapPlugin.routeChannel = routeChannel;
+
         final FlutterAmapPlugin plugin = new FlutterAmapPlugin(root);
 
         registrar.platformViewRegistry().registerViewFactory(FlutterAMapView.MAP_CHANNEL_NAME,
@@ -142,18 +149,27 @@ public class FlutterAmapPlugin implements MethodCallHandler {
 
     @Override
     public void onMethodCall(MethodCall call, Result result) {
-        if (call.method.equals("getPlatformVersion")) {
-            result.success("Android " + android.os.Build.VERSION.RELEASE);
-        } else if (call.method.equals("initKey")) {
-            result.success("init");
-        } else if (call.method.equals("initLocation")) {
-            new FlutterAMapLocationRegister().onMethodCall(call, result);
-        } else if (call.method.equals("startSingleLocation")) {
-            new FlutterAMapStartLocation().onMethodCall(call, result);
-        } else if (call.method.equals("stopLocation")) {
-            new FlutterAMapStopLocation().onMethodCall(call, result);
-        } else {
-            result.notImplemented();
+        switch (call.method) {
+            case "getPlatformVersion":
+                result.success("Android " + android.os.Build.VERSION.RELEASE);
+                break;
+            case "initKey":
+                result.success("init");
+                break;
+            case "initLocation":
+                new FlutterAMapLocationRegister().onMethodCall(call, result);
+                break;
+            case "startSingleLocation":
+                new FlutterAMapStartLocation().onMethodCall(call, result);
+                break;
+            case "stopLocation":
+                new FlutterAMapStopLocation().onMethodCall(call, result);
+                break;
+            case "startRoutePlanning":
+                new FlutterAMapSearchRegister().onMethodCall(call, result);
+            default:
+                result.notImplemented();
+                break;
         }
     }
 

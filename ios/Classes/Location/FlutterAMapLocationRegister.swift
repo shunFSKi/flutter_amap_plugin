@@ -35,7 +35,6 @@ public class FlutterAMapStartLocation: NSObject {
         if let arg = LocationOptions.deserialize(from: call?.arguments as? String) {
             options = arg
             configOptions(options)
-            _locationManager.delegate = self
             result("start location")
             singleLocation(options?.isReGeocode)
         } else {
@@ -114,10 +113,6 @@ public class FlutterAMapStartLocation: NSObject {
             }
         })
     }
-}
-
-extension FlutterAMapStartLocation: AMapLocationManagerDelegate {
-
 }
 
 public class FlutterAMapStopLocation: NSObject {

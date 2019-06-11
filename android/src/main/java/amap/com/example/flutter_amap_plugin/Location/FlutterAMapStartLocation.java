@@ -1,5 +1,7 @@
 package amap.com.example.flutter_amap_plugin.Location;
 
+import android.util.Log;
+
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
@@ -38,7 +40,7 @@ public class FlutterAMapStartLocation implements MethodChannel.MethodCallHandler
 
     @Override
     public void onLocationChanged(AMapLocation aMapLocation) {
-        if (aMapLocation != null && aMapLocation.getErrorCode() != 0) {
+        if (aMapLocation != null && aMapLocation.getErrorCode() == 0) {
             if (mLocationOption.isNeedAddress()) {
                 Map<String, Object> map = new HashMap<>();
                 map.put("address", aMapLocation.getAddress());

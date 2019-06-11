@@ -57,16 +57,17 @@ static NSString *AMAP_SEARCH_ROUTE_CHANNEL = @"plugin/amap/search/route";
         }
     }];
 
-    //路线规划
-    FlutterMethodChannel *routeChannel = [FlutterMethodChannel methodChannelWithName:AMAP_SEARCH_ROUTE_CHANNEL binaryMessenger:[registar messenger]];
-    [routeChannel setMethodCallHandler:^(FlutterMethodCall *call, FlutterResult result) {
-        if ([call.method isEqualToString:@"startRoutePlanning"]) {
-            FlutterAMapRoutePlan *routePlan = [[FlutterAMapRoutePlan alloc] init];
-            [routePlan onMethodWithCall:call result:result];
-        } else {
-            result(FlutterMethodNotImplemented);
-        }
-    }];
+//    //路线规划
+//    FlutterMethodChannel *routeChannel = [FlutterMethodChannel methodChannelWithName:AMAP_SEARCH_ROUTE_CHANNEL binaryMessenger:[registar messenger]];
+//    [routeChannel setMethodCallHandler:^(FlutterMethodCall *call, FlutterResult result) {
+//
+//        if ([call.method isEqualToString:@"startRoutePlanning"]) {
+//            FlutterAMapRoutePlan *routePlan = [AMapSearchFunctionRegister routePlanningFuntionHandler][call.method];
+//            [routePlan onMethodWithCall:call result:result];
+//        } else {
+//            result(FlutterMethodNotImplemented);
+//        }
+//    }];
 
 }
 

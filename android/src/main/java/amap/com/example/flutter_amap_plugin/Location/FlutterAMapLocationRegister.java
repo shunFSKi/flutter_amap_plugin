@@ -1,5 +1,7 @@
 package amap.com.example.flutter_amap_plugin.Location;
 
+import android.annotation.SuppressLint;
+
 import com.amap.api.location.AMapLocationClient;
 
 import amap.com.example.flutter_amap_plugin.FlutterAmapPlugin;
@@ -14,7 +16,8 @@ import io.flutter.plugin.common.MethodChannel;
  */
 public class FlutterAMapLocationRegister implements MethodChannel.MethodCallHandler {
     public static final String LOCATION_CHANNEL_NAME = "plugin/amap/location";
-    public static AMapLocationClient mLocationClient = null;
+    @SuppressLint("StaticFieldLeak")
+    static AMapLocationClient mLocationClient = null;
 
     @Override
     public void onMethodCall(MethodCall methodCall, MethodChannel.Result result) {

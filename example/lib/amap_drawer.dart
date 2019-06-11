@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import './amap_map/amap_map_page.dart';
 import './amap_map/amap_nav_page.dart';
 import './amap_map/amap_location_page.dart';
+import './amap_map/amap_route_page.dart';
 
 class AMapDrawer extends StatelessWidget {
   @override
@@ -56,8 +57,8 @@ class AMapDrawer extends StatelessWidget {
               onTap: () {
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) {
-                  return LocationPage(
-                    title: '获取单次定位',
+                  return RoutePlanningPage(
+                    title: '获取规划信息',
                   );
                 }));
               },

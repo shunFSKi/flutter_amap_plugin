@@ -4,7 +4,7 @@
 
 import UIKit
 import HandyJSON
-import AMapLocationKit
+//import AMapLocationKit
 
 class AMapLocationModel: NSObject, HandyJSON {
     required override init() {

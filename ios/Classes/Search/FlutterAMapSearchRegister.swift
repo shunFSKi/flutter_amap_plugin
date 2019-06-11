@@ -7,42 +7,83 @@ import AMapFoundationKit
 import AMapSearchKit
 import Flutter
 
-class FlutterAMapSearchRegister: NSObject {
+//private var _search: AMapSearchAPI!
 
+public class FlutterAMapSearch: NSObject {
+    var _search: AMapSearchAPI!
+
+    public override init() {
+        super.init()
+    }
+
+    deinit {
+        print("FlutterAMapSearch delloc")
+    }
 }
 
-class FlutterAMapRoutePlan: NSObject {
-//    let _routePlanParam: RoutePlanParam!
-    var _search: AMapSearchAPI!
-    var _result: FlutterResult!
+public class FlutterAMapRoutePlan: FlutterAMapSearch, AMapSearchDelegate {
 
     public override init() {
         super.init()
         _search = AMapSearchAPI()
         _search.delegate = self
+    }
 
-        let startCoordinate = CLLocationCoordinate2DMake(39.910267, 116.370888)
-        let destinationCoordinate = CLLocationCoordinate2DMake(39.989872, 116.481956)
+    public func onMethod(call: FlutterMethodCall!, result: FlutterResult!) {
+        if let options = RoutePlanningModel.deserialize(from: call?.arguments as? String) {
+            routePlanning(options)
+            routeShareUrl(options)
+            result("start route planning")
+        } else {
+            result(FlutterError.init(code: "0", message: "arg not string", details: nil))
+        }
+    }
+
+    func routePlanning(_ options: RoutePlanningModel!) {
         let request = AMapDrivingRouteSearchRequest()
-        request.origin = AMapGeoPoint.location(withLatitude: CGFloat(startCoordinate.latitude), longitude: CGFloat(startCoordinate.longitude))
-        request.destination = AMapGeoPoint.location(withLatitude: CGFloat(destinationCoordinate.latitude), longitude: CGFloat(destinationCoordinate.longitude))
-
+        request.origin = AMapGeoPoint.location(withLatitude: CGFloat(options.origin.latitude), longitude: CGFloat(options.origin.longitude))
+        request.destination = AMapGeoPoint.location(withLatitude: CGFloat(options.destination.latitude), longitude: CGFloat(options.destination.longitude))
+        request.strategy = options.strategy
         request.requireExtension = true
 
         _search.aMapDrivingRouteSearch(request)
     }
 
-    @objc public func onMethod(call: FlutterMethodCall!, result: FlutterResult!) {
+    func routeShareUrl(_ options: RoutePlanningModel!) {
+        let request = AMapRouteShareSearchRequest()
+        request.strategy = options.strategy
+        request.startCoordinate = AMapGeoPoint.location(withLatitude: CGFloat(options.destination.latitude), longitude: CGFloat(options.destination.longitude))
+        request.destinationCoordinate = AMapGeoPoint.location(withLatitude: CGFloat(options.destination.latitude), longitude: CGFloat(options.destination.longitude))
+        _search.aMapRouteShareSearch(request)
     }
-}
 
-// AMapSearchDelegate
-extension FlutterAMapRoutePlan: AMapSearchDelegate {
     public func onRouteSearchDone(_ request: AMapRouteSearchBaseRequest!, response: AMapRouteSearchResponse!) {
-
+        if response.route.paths.count > 0 {
+            let path: AMapPath = response.route.paths[0]
+            SwiftFlutterAmapPlugin.routeChannel.invokeMethod(
+                    "onRouteSearchDone",
+                    arguments: ["duration": path.duration,
+                                "distance": path.distance,
+                                "strategy": path.strategy!,
+                                "totalTrafficLights": path.totalTrafficLights])
+        } else {
+            SwiftFlutterAmapPlugin.routeChannel.invokeMethod("routePlanningError", arguments: "路线规划错误:{0000 - 未发现有效路径}")
+        }
     }
 
     public func aMapSearchRequest(_ request: Any!, didFailWithError error: Error!) {
+        if let error = error {
+            let error = error as NSError
+            SwiftFlutterAmapPlugin.routeChannel.invokeMethod("routePlanningError", arguments: "路线规划错误:{\(error.code) - \(error.localizedDescription)}")
+        }
+    }
 
+    public func onShareSearchDone(_ request: AMapShareSearchBaseRequest!, response: AMapShareSearchResponse!) {
+        SwiftFlutterAmapPlugin.routeChannel.invokeMethod("onShareSearchDone", arguments: ["shareURL": response.shareURL])
+    }
+
+    deinit {
+        print("route delloc")
     }
 }
+
