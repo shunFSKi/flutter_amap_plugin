@@ -2,16 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a5c83aa7-b005-4cc9-b678-cdaea0ffb93d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/flutter_amap_plugin/lib/amap_search/amap_convert/amap_convert_controller.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/amap_search/amap_convert/amap_convert_controller.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/java/amap/com/example/flutter_amap_plugin/Map/FlutterAMapView.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/amap/com/example/flutter_amap_plugin/Map/FlutterAMapView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/java/amap/com/example/flutter_amap_plugin/FlutterAmapPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/amap/com/example/flutter_amap_plugin/FlutterAmapPlugin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/java/amap/com/example/flutter_amap_plugin/Nav/FlutterAMapNavView.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/amap/com/example/flutter_amap_plugin/Nav/FlutterAMapNavView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/flutter_amap_plugin/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/flutter_amap_plugin/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/flutter_amap_plugin/android/src/main/java/amap/com/example/flutter_amap_plugin/Map/FlutterAMapView.java" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/flutter_amap_plugin/android/src/main/java/amap/com/example/flutter_amap_plugin/Map/FlutterAMapView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/flutter_amap_plugin/example/lib/amap_map/amap_map_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/flutter_amap_plugin/example/lib/amap_map/amap_map_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/flutter_amap_plugin/ios/Classes/Map/FlutterAMapViewFactory.swift" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/flutter_amap_plugin/ios/Classes/Map/FlutterAMapViewFactory.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/flutter_amap_plugin/lib/amap_map/amap_map_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/flutter_amap_plugin/lib/amap_map/amap_map_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/lib/amap_map/amap_map_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/amap_map/amap_map_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Classes/Map/FlutterAMapViewFactory.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/Map/FlutterAMapViewFactory.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/amap_map/amap_map_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/amap_map/amap_map_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/flutter_amap_plugin/android/src/main/java/amap/com/example/flutter_amap_plugin/FlutterAmapPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/flutter_amap_plugin/android/src/main/java/amap/com/example/flutter_amap_plugin/FlutterAmapPlugin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/flutter_amap_plugin/android/src/main/java/amap/com/example/flutter_amap_plugin/Nav/FlutterAMapNavView.java" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/flutter_amap_plugin/android/src/main/java/amap/com/example/flutter_amap_plugin/Nav/FlutterAMapNavView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/flutter_amap_plugin/lib/amap_location/amap_location_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/flutter_amap_plugin/lib/amap_location/amap_location_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/amap_location/amap_location_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/amap_location/amap_location_controller.dart" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -32,10 +32,22 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/flutter_amap_plugin.dart">
+        <entry file="file://$PROJECT_DIR$/example/lib/amap_map/amap_route_page.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="18" column="80" selection-start-line="18" selection-start-column="80" selection-end-line="18" selection-end-column="80" />
+            <state relative-caret-position="901">
+              <caret line="64" column="29" selection-start-line="64" selection-start-column="29" selection-end-line="64" selection-end-column="29" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/amap_search/amap_route/amap_route_controller.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="36">
+              <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -43,49 +55,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example/lib/amap_map/amap_map_page.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="68" column="50" selection-start-line="68" selection-start-column="50" selection-end-line="68" selection-end-column="50" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/amap_map/amap_map_view.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="64" column="25" selection-start-line="64" selection-start-column="25" selection-end-line="64" selection-end-column="25" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lib/amap_map/amap_map_controller.dart">
+        <entry file="file://$PROJECT_DIR$/lib/amap_search/amap_convert/amap_convert_controller.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="57" selection-start-line="57" selection-end-line="57" />
+            <state relative-caret-position="105">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
               <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example/lib/amap_map/amap_route_page.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="682">
-              <caret line="62" column="37" selection-start-line="62" selection-start-column="37" selection-end-line="62" selection-end-column="37" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
+                <element signature="e#0#20#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -135,16 +111,17 @@
         <option value="$PROJECT_DIR$/ios/flutter_amap_plugin.podspec" />
         <option value="$PROJECT_DIR$/lib/amap_search/amap_search_route_controller.dart" />
         <option value="$PROJECT_DIR$/lib/amap_search/amap_route_controller.dart" />
-        <option value="$PROJECT_DIR$/lib/amap_location/amap_location_controller.dart" />
         <option value="$PROJECT_DIR$/example/lib/amap_drawer.dart" />
         <option value="$PROJECT_DIR$/lib/amap_location/amap_location_options.dart" />
         <option value="$PROJECT_DIR$/lib/flutter_amap_plugin.dart" />
         <option value="$PROJECT_DIR$/lib/amap_search/amap_route/amap_route_options.dart" />
         <option value="$PROJECT_DIR$/android/src/main/java/amap/com/example/flutter_amap_plugin/Location/FlutterAMapLocationRegister.java" />
         <option value="$PROJECT_DIR$/example/lib/amap_map/amap_route_page.dart" />
-        <option value="$PROJECT_DIR$/lib/amap_search/amap_route/amap_route_controller.dart" />
         <option value="$PROJECT_DIR$/lib/amap_map/amap_map_controller.dart" />
         <option value="$PROJECT_DIR$/example/lib/amap_map/amap_map_page.dart" />
+        <option value="$PROJECT_DIR$/lib/amap_location/amap_location_controller.dart" />
+        <option value="$PROJECT_DIR$/lib/amap_search/amap_route/amap_route_controller.dart" />
+        <option value="$PROJECT_DIR$/lib/amap_search/amap_convert/amap_convert_controller.dart" />
       </list>
     </option>
   </component>
@@ -155,8 +132,7 @@
     <auto-save>true</auto-save>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="101" />
-    <option name="y" value="27" />
+    <option name="y" value="23" />
     <option name="width" value="1106" />
     <option name="height" value="737" />
   </component>
@@ -166,6 +142,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -177,41 +154,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="flutter_amap_plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter_amap_plugin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flutter_amap_plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter_amap_plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="example" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flutter_amap_plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter_amap_plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="example" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flutter_amap_plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter_amap_plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="example" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="amap_map" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flutter_amap_plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter_amap_plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -229,6 +171,35 @@
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="ios" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="Classes" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="flutter_amap_plugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="flutter_amap_plugin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="flutter_amap_plugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="flutter_amap_plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="flutter_amap_plugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="flutter_amap_plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="amap_search" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="flutter_amap_plugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="flutter_amap_plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="amap_search" type="462c0819:PsiDirectoryNode" />
+              <item name="amap_route" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -287,10 +258,9 @@
     <option name="totallyTimeSpent" value="10596000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="101" y="27" width="1106" height="737" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1106" height="737" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23684211" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23684211" />
       <window_info id="Captures" order="1" side_tool="true" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
@@ -305,9 +275,9 @@
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Android Profiler" order="3" show_stripe_button="false" />
       <window_info anchor="bottom" id="Logcat" order="4" />
-      <window_info anchor="bottom" id="Debug" order="5" visible="true" weight="0.28616852" />
-      <window_info anchor="bottom" id="Terminal" order="6" sideWeight="0.49753696" weight="0.14467409" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50246304" side_tool="true" weight="0.14467409" />
+      <window_info active="true" anchor="bottom" id="Debug" order="5" visible="true" weight="0.37201908" />
+      <window_info anchor="bottom" id="Terminal" order="6" sideWeight="0.49624062" weight="0.19872814" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5037594" side_tool="true" weight="0.19872814" />
       <window_info anchor="bottom" id="Flutter Performance" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
@@ -331,16 +301,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/example/android/android.keystore">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/android/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="66" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/example/android/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -546,13 +506,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/amap_location/amap_location_options.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-302">
-          <caret line="66" column="35" selection-start-line="66" selection-start-column="35" selection-end-line="66" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/amap_map/amap_map_options.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -577,27 +530,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/lib/amap_map/amap_location_page.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2">
-          <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/android/src/main/java/amap/com/example/flutter_amap_plugin/Location/FlutterAMapLocationRegister.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="163">
           <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/amap_location/amap_location_controller.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-542">
-          <caret line="3" column="39" selection-start-line="3" selection-start-column="39" selection-end-line="3" selection-end-column="39" />
         </state>
       </provider>
     </entry>
@@ -607,16 +543,6 @@
           <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/amap_search/amap_route/amap_route_controller.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="59" column="5" selection-start-line="59" selection-start-column="2" selection-end-line="59" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -631,19 +557,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/lib/amap_map/amap_route_page.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="682">
-          <caret line="62" column="37" selection-start-line="62" selection-start-column="37" selection-end-line="62" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/flutter_amap_plugin.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
+        <state relative-caret-position="57">
           <caret line="18" column="80" selection-start-line="18" selection-start-column="80" selection-end-line="18" selection-end-column="80" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
@@ -651,20 +567,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/amap_map/amap_map_view.dart">
+    <entry file="file://$PROJECT_DIR$/example/lib/amap_map/amap_map_page.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="64" column="25" selection-start-line="64" selection-start-column="25" selection-end-line="64" selection-end-column="25" />
+        <state relative-caret-position="1273">
+          <caret line="68" column="50" selection-start-line="68" selection-start-column="50" selection-end-line="68" selection-end-column="50" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/lib/amap_map/amap_map_page.dart">
+    <entry file="file://$PROJECT_DIR$/lib/amap_map/amap_map_view.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="68" column="50" selection-start-line="68" selection-start-column="50" selection-end-line="68" selection-end-column="50" />
+        <state relative-caret-position="1102">
+          <caret line="64" column="25" selection-start-line="64" selection-start-column="25" selection-end-line="64" selection-end-column="25" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
@@ -673,10 +589,74 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/amap_map/amap_map_controller.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="57" selection-start-line="57" selection-end-line="57" />
+        <state relative-caret-position="200">
+          <caret line="53" column="50" selection-start-line="53" selection-start-column="50" selection-end-line="53" selection-end-column="50" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/amap_location/amap_location_options.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="610">
+          <caret line="74" column="2" selection-start-line="74" selection-start-column="2" selection-end-line="74" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/lib/amap_map/amap_location_page.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="66" column="22" lean-forward="true" selection-start-line="66" selection-start-column="22" selection-end-line="66" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/amap_location/amap_location_controller.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1031">
+          <caret line="67" column="3" selection-start-line="67" selection-start-column="3" selection-end-line="67" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/lib/amap_map/amap_route_page.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="901">
+          <caret line="64" column="29" selection-start-line="64" selection-start-column="29" selection-end-line="64" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/amap_search/amap_route/amap_route_controller.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../Flutter/flutter/packages/flutter/lib/src/services/platform_channel.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="299" column="6" selection-start-line="299" selection-start-column="6" selection-end-line="299" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/amap_search/amap_convert/amap_convert_controller.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
           </folding>
         </state>
       </provider>

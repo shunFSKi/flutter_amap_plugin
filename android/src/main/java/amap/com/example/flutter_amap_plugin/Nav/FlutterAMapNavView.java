@@ -47,7 +47,7 @@ import static amap.com.example.flutter_amap_plugin.FlutterAmapPlugin.RESUMED;
 import static amap.com.example.flutter_amap_plugin.FlutterAmapPlugin.STOPPED;
 
 public class FlutterAMapNavView implements PlatformView, MethodChannel.MethodCallHandler, Application.ActivityLifecycleCallbacks, AMapNaviListener, AMapNaviViewListener {
-    public static final String Nav_CHANNEL_NAME = "plugin/amap/nav";
+    public static final String NAV_CHANNEL_NAME = "plugin/amap/nav";
 
     private final Context context;
     private final AtomicInteger atomicInteger;
@@ -69,7 +69,7 @@ public class FlutterAMapNavView implements PlatformView, MethodChannel.MethodCal
         this.registrar = registrar;
         this.mOptions = model;
 
-        navChannel = new MethodChannel(registrar.messenger(), Nav_CHANNEL_NAME + "/" + id);
+        navChannel = new MethodChannel(registrar.messenger(), NAV_CHANNEL_NAME + "/" + id);
         navChannel.setMethodCallHandler(this);
 
         aMapNav = AMapNavi.getInstance(activity);

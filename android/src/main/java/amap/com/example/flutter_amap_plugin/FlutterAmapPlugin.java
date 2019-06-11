@@ -143,7 +143,7 @@ public class FlutterAmapPlugin implements MethodCallHandler {
 
         registrar.platformViewRegistry().registerViewFactory(FlutterAMapView.MAP_CHANNEL_NAME,
                 new FlutterAMapViewFactory(plugin.state, registrar));
-        registrar.platformViewRegistry().registerViewFactory(FlutterAMapNavView.Nav_CHANNEL_NAME,
+        registrar.platformViewRegistry().registerViewFactory(FlutterAMapNavView.NAV_CHANNEL_NAME,
                 new FlutterAMapNavFactory(plugin.state, registrar));
     }
 
@@ -167,6 +167,7 @@ public class FlutterAmapPlugin implements MethodCallHandler {
                 break;
             case "startRoutePlanning":
                 new FlutterAMapSearchRegister().onMethodCall(call, result);
+                break;
             default:
                 result.notImplemented();
                 break;
