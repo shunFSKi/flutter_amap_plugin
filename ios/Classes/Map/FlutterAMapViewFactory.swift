@@ -19,6 +19,8 @@ class FlutterAMapView: NSObject, FlutterPlatformView {
     fileprivate var annoOptions:AnnotationOptions!
     var annotations: Array<MAPointAnnotation>!
     var addAnnotitons = false
+    var mapLoaded = false
+    
     
     
     func view() -> UIView {
@@ -96,6 +98,8 @@ class FlutterAMapView: NSObject, FlutterPlatformView {
         
         aMapView.addAnnotations(annotations)
         aMapView.showAnnotations(annotations, animated: true)
+        
+        addAnnotitons = false
     }
     
     
@@ -105,9 +109,13 @@ class FlutterAMapView: NSObject, FlutterPlatformView {
             if let options = AnnotationOptions.deserialize(from: call.arguments as? String) {
                 annoOptions = options
                 addAnnotitons = true
+                addAnnotationsOnMap()
             } else {
                 result(FlutterError.init(code: "0", message: "args not json string", details: nil))
             }
+        } else if method == "annotation_clear" {
+            aMapView.removeAnnotations(annotations)
+            result("clear_success")
         } else {
             return false
         }
@@ -118,6 +126,11 @@ class FlutterAMapView: NSObject, FlutterPlatformView {
         print("success release")
     }
     
+    func addAnnotationsOnMap() {
+        if addAnnotitons && mapLoaded {
+            initAnnotations()
+        }
+    }
 }
 
 // MARK: - MAMapViewDelegate
@@ -166,10 +179,8 @@ extension FlutterAMapView:MAMapViewDelegate {
     }
     
     func mapInitComplete(_ mapView: MAMapView!) {
-        
-        if addAnnotitons {
-            initAnnotations()
-        }
+        mapLoaded = true
+        addAnnotationsOnMap()
         
     }
     

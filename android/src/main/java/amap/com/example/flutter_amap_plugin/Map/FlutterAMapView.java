@@ -53,7 +53,8 @@ public class FlutterAMapView implements PlatformView, MethodChannel.MethodCallHa
     private boolean disposed = false;
     private ArrayList<MarkerOptions> annotations = new ArrayList<MarkerOptions>();
     private AnnotationOptions annotationOptions;
-    private boolean addAnnotitons = false;
+    private boolean addAnnotations = false;
+    private boolean mapLoaded = false;
     private ArrayList<LatLng> positions = new ArrayList<>();
 
     public FlutterAMapView(Context context, AtomicInteger atomicInteger, PluginRegistry.Registrar registrar, int id, AMapMapModel model) {
@@ -121,15 +122,24 @@ public class FlutterAMapView implements PlatformView, MethodChannel.MethodCallHa
     }
 
     @Override
-    public void onMethodCall(MethodCall methodCall, MethodChannel.Result result) {
+    public void onMethodCall(MethodCall methodCall, final MethodChannel.Result result) {
         if (methodCall.method.equals("annotation_add")) {
             if (methodCall.arguments instanceof String) {
                 Gson gson = new Gson();
                 AnnotationOptions model = new AnnotationOptions();
                 model = gson.fromJson(methodCall.arguments.toString(), AnnotationOptions.class);
                 this.annotationOptions = model;
-                addAnnotitons = true;
+                addAnnotations = true;
+                addAnnotationsOnMap();
             }
+        } else if (methodCall.method.equals("annotation_clear")) {
+            aMap.clear(true);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    result.success("clear_success");
+                }
+            }).start();
         }
     }
 
@@ -209,8 +219,10 @@ public class FlutterAMapView implements PlatformView, MethodChannel.MethodCallHa
             aMap = mapView.getMap();
         }
         aMap.setOnInfoWindowClickListener(this);
-        for (AMapAnnotationModel coor:
-             this.annotationOptions.annotationCoordinates) {
+        this.annotations.clear();
+        this.positions.clear();
+        for (AMapAnnotationModel coor :
+                this.annotationOptions.annotationCoordinates) {
             MarkerOptions markerOption = new MarkerOptions()
                     .position(coor.coordinate.toLatLng())
                     .draggable(annotationOptions.draggable)
@@ -230,26 +242,32 @@ public class FlutterAMapView implements PlatformView, MethodChannel.MethodCallHa
     }
 
     /*
-    * OnInfoWindowClickListener
-    * */
+     * OnInfoWindowClickListener
+     * */
     @Override
     public void onInfoWindowClick(Marker marker) {
         Map<String, Integer> arg = new HashMap<>();
         int index = this.positions.indexOf(marker.getPosition());
 //        if (index > 0) {
-            arg.put("tapIndex",index);
-            mapChannel.invokeMethod("annotation_tap", arg);
+        arg.put("tapIndex", index);
+        mapChannel.invokeMethod("annotation_tap", arg);
 //        }
     }
 
     @Override
     public void onMapLoaded() {
-        if (addAnnotitons) {
+        mapLoaded = true;
+        addAnnotationsOnMap();
+    }
+
+    private void addAnnotationsOnMap() {
+        if (addAnnotations && mapLoaded) {
             try {
                 initAnnotations();
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            addAnnotations = false;
         }
     }
 }

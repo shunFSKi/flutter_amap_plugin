@@ -49,7 +49,13 @@ class AMapMapController {
 
   Future addAnnotation({
     @required AMapAnnotationOptions options,
-  }) {
-    return _mapChannel.invokeMethod('annotation_add', options.toJsonString());
+  }) async {
+    return _mapChannel.invokeMethod(
+        'annotation_add', options.toJsonString());
+  }
+
+  Future clearAllAnnotations() async {
+    var result = await _mapChannel.invokeMethod('annotation_clear');
+    return result;
   }
 }
