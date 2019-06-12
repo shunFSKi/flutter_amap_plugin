@@ -38,7 +38,7 @@ class AMapRouteController {
         case 'routePlanningError':
           if (onRoutePlanningCallHandler != null) {
             onRoutePlanningCallHandler(
-                null, null, FlutterError(handler.arguments));
+                null, null, FlutterError(handler.arguments.toString()));
           }
           break;
         default:

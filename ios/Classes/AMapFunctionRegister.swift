@@ -9,7 +9,9 @@ public class AMapSearchFunctionRegister: NSObject {
 
     static public func routePlanningFuntionHandler() -> Dictionary<String, FlutterAMapSearch> {
         if _routeDic == nil {
-            _routeDic = ["startRoutePlanning": FlutterAMapRoutePlan()]
+            _routeDic = ["startRoutePlanning": FlutterAMapRoutePlan(),
+                         "coordinateToGeo": FlutterAMapConvert(),
+                         "geoToCoordinate": FlutterAMapConvert()]
         }
         return _routeDic
     }

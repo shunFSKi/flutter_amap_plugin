@@ -19,6 +19,7 @@ import amap.com.example.flutter_amap_plugin.Map.FlutterAMapView;
 import amap.com.example.flutter_amap_plugin.Map.FlutterAMapViewFactory;
 import amap.com.example.flutter_amap_plugin.Nav.FlutterAMapNavFactory;
 import amap.com.example.flutter_amap_plugin.Nav.FlutterAMapNavView;
+import amap.com.example.flutter_amap_plugin.Search.FlutterAMapConvertRegister;
 import amap.com.example.flutter_amap_plugin.Search.FlutterAMapSearchRegister;
 import io.flutter.app.FlutterActivity;
 import io.flutter.plugin.common.MethodCall;
@@ -28,6 +29,7 @@ import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
 
 import static amap.com.example.flutter_amap_plugin.Location.FlutterAMapLocationRegister.LOCATION_CHANNEL_NAME;
+import static amap.com.example.flutter_amap_plugin.Search.FlutterAMapConvertRegister.SEARCH_CONVERT_CHANNEL_NAME;
 import static amap.com.example.flutter_amap_plugin.Search.FlutterAMapSearchRegister.SEARCH_ROUTE_CHANNEL_NAME;
 
 /**
@@ -43,6 +45,8 @@ public class FlutterAmapPlugin implements MethodCallHandler {
     public static Registrar registrar;
     public static MethodChannel locChannel;
     public static MethodChannel routeChannel;
+    public static MethodChannel convertChannel;
+
     // 当前Activity环境
     private static FlutterActivity root;
     public static final int CREATED = 1;
@@ -51,6 +55,7 @@ public class FlutterAmapPlugin implements MethodCallHandler {
     public static final int PAUSED = 4;
     public static final int STOPPED = 5;
     public static final int DESTROYED = 6;
+
 
     private final AtomicInteger state = new AtomicInteger(0);
 
@@ -139,6 +144,10 @@ public class FlutterAmapPlugin implements MethodCallHandler {
         routeChannel.setMethodCallHandler(new FlutterAmapPlugin((FlutterActivity) registrar.activity()));
         FlutterAmapPlugin.routeChannel = routeChannel;
 
+        final MethodChannel convertChannel = new MethodChannel(registrar.messenger(), SEARCH_CONVERT_CHANNEL_NAME);
+        convertChannel.setMethodCallHandler(new FlutterAmapPlugin((FlutterActivity) registrar.activity()));
+        FlutterAmapPlugin.convertChannel = convertChannel;
+
         final FlutterAmapPlugin plugin = new FlutterAmapPlugin(root);
 
         registrar.platformViewRegistry().registerViewFactory(FlutterAMapView.MAP_CHANNEL_NAME,
@@ -167,6 +176,12 @@ public class FlutterAmapPlugin implements MethodCallHandler {
                 break;
             case "startRoutePlanning":
                 new FlutterAMapSearchRegister().onMethodCall(call, result);
+                break;
+            case "geoToCoordinate":
+                new FlutterAMapConvertRegister().onMethodCall(call, result);
+                break;
+            case "coordinateToGeo":
+                new FlutterAMapConvertRegister().onMethodCall(call, result);
                 break;
             default:
                 result.notImplemented();

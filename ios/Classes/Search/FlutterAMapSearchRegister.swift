@@ -7,8 +7,6 @@ import AMapFoundationKit
 import AMapSearchKit
 import Flutter
 
-//private var _search: AMapSearchAPI!
-
 public class FlutterAMapSearch: NSObject {
     var _search: AMapSearchAPI!
 
@@ -83,7 +81,54 @@ public class FlutterAMapRoutePlan: FlutterAMapSearch, AMapSearchDelegate {
     }
 
     deinit {
-        print("route delloc")
+        print("route dealloc")
+    }
+}
+
+public class FlutterAMapConvert: FlutterAMapSearch, AMapSearchDelegate {
+    public override init() {
+        super.init()
+        _search = AMapSearchAPI()
+        _search.delegate = self
+    }
+
+    public func onMethod(call: FlutterMethodCall!, result: FlutterResult!) {
+        if call.method == "geoToCoordinate" {
+            if let address = call.arguments as? String {
+                let request = AMapGeocodeSearchRequest()
+                request.address = address
+                _search.aMapGeocodeSearch(request)
+            }
+        } else if call.method == "coordinateToGeo" {
+            let request = AMapReGeocodeSearchRequest()
+            if let options = Coordinate.deserialize(from: call.arguments as? String) {
+                request.location = AMapGeoPoint.location(withLatitude: CGFloat(options.latitude), longitude: CGFloat(options.longitude))
+                request.requireExtension = true
+                _search.aMapReGoecodeSearch(request)
+            }
+        }
+    }
+
+    public func onGeocodeSearchDone(_ request: AMapGeocodeSearchRequest!, response: AMapGeocodeSearchResponse!) {
+        if response.geocodes.count > 0 {
+            print("--------\(response.geocodes.count)")
+            let latlon = response.geocodes[0].location
+            SwiftFlutterAmapPlugin.convertChannel.invokeMethod("onGeoToCoordinate", arguments: ["lat":latlon?.latitude,"lon":latlon?.longitude])
+        } else {
+            SwiftFlutterAmapPlugin.convertChannel.invokeMethod("onConvertError", arguments:"地址转坐标错误:{未发现有效地址}")
+        }
+        
+    }
+
+    public func onReGeocodeSearchDone(_ request: AMapReGeocodeSearchRequest!, response: AMapReGeocodeSearchResponse!) {
+        SwiftFlutterAmapPlugin.convertChannel.invokeMethod("onCoordinateToGeo", arguments: ["address":response.regeocode.formattedAddress])
+    }
+    
+    public func aMapSearchRequest(_ request: Any!, didFailWithError error: Error!) {
+        if let error = error {
+            let error = error as NSError
+            SwiftFlutterAmapPlugin.routeChannel.invokeMethod("onConvertError", arguments: "地址转换错误:{\(error.code) - \(error.localizedDescription)}")
+        }
     }
 }
 
