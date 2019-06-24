@@ -64,7 +64,7 @@ public class FlutterAMapNavView implements PlatformView, MethodChannel.MethodCal
     private boolean disposed = false;
 
     public FlutterAMapNavView(Context context, AtomicInteger atomicInteger, PluginRegistry.Registrar registrar, int id, Activity activity, AMapNavModel model) {
-        this.context = context;
+        this.context = registrar.activity().getApplicationContext();
         this.atomicInteger = atomicInteger;
         this.registrar = registrar;
         this.mOptions = model;
