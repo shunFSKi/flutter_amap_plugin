@@ -74,6 +74,8 @@ public class FlutterAMapNavView implements PlatformView, MethodChannel.MethodCal
 
         aMapNav = AMapNavi.getInstance(activity);
         aMapNav.addAMapNaviListener(this);
+        aMapNav = AMapNavi.getInstance(this.context);
+        aMapNav.setUseInnerVoice(true);
 
         view = View.inflate(activity, R.layout.amap_nav, null);
         navView = view.findViewById(R.id.navi_view);
@@ -84,6 +86,7 @@ public class FlutterAMapNavView implements PlatformView, MethodChannel.MethodCal
         navView.onCreate(null);
         navView.setViewOptions(options);
         navView.setAMapNaviViewListener(this);
+
     }
 
     private AMapNaviViewOptions configOptions() {
