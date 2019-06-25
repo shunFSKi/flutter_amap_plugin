@@ -39,11 +39,47 @@ class _MapPageState extends State<MapPage> {
     ),
   ];
 
+  var _annotations2 = [
+    AMapAnnotationModel(
+      coordinate: Coordinate(39.992520, 116.336170),
+      title: '11111',
+      subTitle: 'sub111',
+      annotationIcon: 'images/default_marker.png',
+    ),
+    AMapAnnotationModel(
+      coordinate: Coordinate(39.998293, 116.348904),
+      title: '22222',
+      subTitle: 'sub111',
+      annotationIcon: 'images/amap_start.png',
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        actions: <Widget>[
+          RaisedButton(
+            onPressed: () {
+              _controller.clearAllAnnotations().then((value) {
+                _controller.addAnnotation(
+                  options: AMapAnnotationOptions(
+                    annotationCoordinates: _annotations2,
+                    annotationIcon: 'images/default_marker.png',
+                  ),
+                );
+              });
+            },
+            child: Text('reset'),
+          ),
+          RaisedButton(
+            onPressed: () {
+              _controller.clearAllAnnotations();
+            },
+            child: Text('clear'),
+          ),
+        ],
       ),
       body: Container(
         child: AMapMapView(

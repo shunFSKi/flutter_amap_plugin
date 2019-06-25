@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../amap_location/amap_location_options.dart';
+import '../common/coordinate.dart';
 
 const _locChannelPrefix = 'plugin/amap/location';
 

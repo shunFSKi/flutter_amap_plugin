@@ -47,7 +47,7 @@ import static amap.com.example.flutter_amap_plugin.FlutterAmapPlugin.RESUMED;
 import static amap.com.example.flutter_amap_plugin.FlutterAmapPlugin.STOPPED;
 
 public class FlutterAMapNavView implements PlatformView, MethodChannel.MethodCallHandler, Application.ActivityLifecycleCallbacks, AMapNaviListener, AMapNaviViewListener {
-    public static final String Nav_CHANNEL_NAME = "plugin/amap/nav";
+    public static final String NAV_CHANNEL_NAME = "plugin/amap/nav";
 
     private final Context context;
     private final AtomicInteger atomicInteger;
@@ -64,16 +64,18 @@ public class FlutterAMapNavView implements PlatformView, MethodChannel.MethodCal
     private boolean disposed = false;
 
     public FlutterAMapNavView(Context context, AtomicInteger atomicInteger, PluginRegistry.Registrar registrar, int id, Activity activity, AMapNavModel model) {
-        this.context = context;
+        this.context = registrar.activity().getApplicationContext();
         this.atomicInteger = atomicInteger;
         this.registrar = registrar;
         this.mOptions = model;
 
-        navChannel = new MethodChannel(registrar.messenger(), Nav_CHANNEL_NAME + "/" + id);
+        navChannel = new MethodChannel(registrar.messenger(), NAV_CHANNEL_NAME + "/" + id);
         navChannel.setMethodCallHandler(this);
 
         aMapNav = AMapNavi.getInstance(activity);
         aMapNav.addAMapNaviListener(this);
+        aMapNav = AMapNavi.getInstance(this.context);
+        aMapNav.setUseInnerVoice(true);
 
         view = View.inflate(activity, R.layout.amap_nav, null);
         navView = view.findViewById(R.id.navi_view);
@@ -84,6 +86,7 @@ public class FlutterAMapNavView implements PlatformView, MethodChannel.MethodCal
         navView.onCreate(null);
         navView.setViewOptions(options);
         navView.setAMapNaviViewListener(this);
+
     }
 
     private AMapNaviViewOptions configOptions() {

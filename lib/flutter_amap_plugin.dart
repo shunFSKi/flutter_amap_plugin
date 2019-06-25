@@ -12,6 +12,9 @@ export './amap_annotation/amap_annotation_options.dart';
 export './amap_nav/amap_nav_options.dart';
 export 'amap_location/amap_location_controller.dart';
 export 'amap_location/amap_location_options.dart';
+export './amap_search/amap_route/amap_route_controller.dart';
+export './amap_search/amap_route/amap_route_options.dart';
+export './amap_search/amap_convert/amap_convert_controller.dart';
 
 class FlutterAmapPlugin {
   static const MethodChannel _channel = const MethodChannel('plugin/base/init');

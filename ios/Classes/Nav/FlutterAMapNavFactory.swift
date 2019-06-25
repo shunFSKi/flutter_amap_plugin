@@ -115,6 +115,8 @@ class FlutterAmapNavView: NSObject, FlutterPlatformView {
     func releaseMap() {
         AMapNaviDriveManager.sharedInstance().stopNavi()
         AMapNaviDriveManager.sharedInstance().removeDataRepresentative(self.navView)
+        //停止语音
+        SpeechSynthesizer.Shared.stopSpeak()
         AMapNaviDriveManager.sharedInstance().delegate = nil
         let isSuccess = AMapNaviDriveManager.destroyInstance()
         print("release--\(isSuccess)")
@@ -141,5 +143,15 @@ extension FlutterAmapNavView: AMapNaviDriveViewDelegate,AMapNaviDriveManagerDele
     
     func driveViewMoreButtonClicked(_ driveView: AMapNaviDriveView) {
         methodChannel.invokeMethod("more_nav", arguments: nil)
+    }
+    
+    func driveManagerIsNaviSoundPlaying(_ driveManager: AMapNaviDriveManager) -> Bool {
+        return SpeechSynthesizer.Shared.isSpeaking()
+    }
+    
+    func driveManager(_ driveManager: AMapNaviDriveManager, playNaviSound soundString: String, soundStringType: AMapNaviSoundType) {
+        NSLog("playNaviSoundString:{%d:%@}", soundStringType.rawValue, soundString);
+        
+        SpeechSynthesizer.Shared.speak(soundString)
     }
 }
