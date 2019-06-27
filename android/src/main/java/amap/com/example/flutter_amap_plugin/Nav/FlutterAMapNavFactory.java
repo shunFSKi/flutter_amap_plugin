@@ -31,7 +31,7 @@ public class FlutterAMapNavFactory extends PlatformViewFactory {
             model = gson.fromJson(o.toString(), AMapNavModel.class);
         }
         FlutterAMapNavView aMapNavView = new FlutterAMapNavView(context, mActivityState, mPluginRegistrar, id, mPluginRegistrar.activity(), model);
-        aMapNavView.setup();
+//        aMapNavView.setup();
         return aMapNavView;
     }
 }

@@ -156,6 +156,7 @@ public class FlutterAMapView implements PlatformView, MethodChannel.MethodCallHa
         disposed = true;
         aMap.setOnInfoWindowClickListener(null);
         mapView.onDestroy();
+        mapChannel.setMethodCallHandler(null);
 
         registrar.activity().getApplication().unregisterActivityLifecycleCallbacks(this);
     }

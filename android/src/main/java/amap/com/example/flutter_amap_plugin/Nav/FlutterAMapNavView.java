@@ -53,6 +53,7 @@ public class FlutterAMapNavView implements PlatformView, MethodChannel.MethodCal
     private final AtomicInteger atomicInteger;
     private final PluginRegistry.Registrar registrar;
     private final MethodChannel navChannel;
+    private final Activity activity;
     private AMapNavModel mOptions;
 
     private AMapNaviView navView;
@@ -68,6 +69,7 @@ public class FlutterAMapNavView implements PlatformView, MethodChannel.MethodCal
         this.atomicInteger = atomicInteger;
         this.registrar = registrar;
         this.mOptions = model;
+        this.activity = activity;
 
         navChannel = new MethodChannel(registrar.messenger(), NAV_CHANNEL_NAME + "/" + id);
         navChannel.setMethodCallHandler(this);
@@ -79,6 +81,9 @@ public class FlutterAMapNavView implements PlatformView, MethodChannel.MethodCal
 
         view = View.inflate(activity, R.layout.amap_nav, null);
         navView = view.findViewById(R.id.navi_view);
+    }
+
+    void initNav() {
 
         AMapNaviViewOptions options = configOptions();
 
@@ -87,6 +92,7 @@ public class FlutterAMapNavView implements PlatformView, MethodChannel.MethodCal
         navView.setViewOptions(options);
         navView.setAMapNaviViewListener(this);
 
+        registrar.activity().getApplication().registerActivityLifecycleCallbacks(this);
     }
 
     private AMapNaviViewOptions configOptions() {
@@ -138,6 +144,7 @@ public class FlutterAMapNavView implements PlatformView, MethodChannel.MethodCal
                 Coordinate model = new Coordinate();
                 model = gson.fromJson(methodCall.arguments.toString(), Coordinate.class);
                 latlon = model;
+                initNav();
             }
         }
     }
