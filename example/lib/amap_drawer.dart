@@ -4,6 +4,7 @@ import './amap_map/amap_nav_page.dart';
 import './amap_map/amap_location_page.dart';
 import './amap_map/amap_route_page.dart';
 import './amap_map/amap_convert_page.dart';
+import 'package:flutter_amap_plugin/flutter_amap_plugin.dart';
 
 class AMapDrawer extends StatelessWidget {
   @override
@@ -40,6 +41,13 @@ class AMapDrawer extends StatelessWidget {
                     title: '导航展示',
                   );
                 }));
+              },
+            ),
+            ListTile(
+              title: Text('安卓导航组件'),
+              onTap: () {
+                AMapNavController().startComponent(
+                    coordinate: Coordinate(31.712799, 117.168188));
               },
             ),
             ListTile(

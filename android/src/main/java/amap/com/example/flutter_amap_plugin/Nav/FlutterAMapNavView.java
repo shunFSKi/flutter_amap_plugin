@@ -81,6 +81,8 @@ public class FlutterAMapNavView implements PlatformView, MethodChannel.MethodCal
 
         view = View.inflate(activity, R.layout.amap_nav, null);
         navView = view.findViewById(R.id.navi_view);
+
+        registrar.activity().getApplication().registerActivityLifecycleCallbacks(this);
     }
 
     void initNav() {
@@ -92,7 +94,6 @@ public class FlutterAMapNavView implements PlatformView, MethodChannel.MethodCal
         navView.setViewOptions(options);
         navView.setAMapNaviViewListener(this);
 
-        registrar.activity().getApplication().registerActivityLifecycleCallbacks(this);
     }
 
     private AMapNaviViewOptions configOptions() {
@@ -154,11 +155,11 @@ public class FlutterAMapNavView implements PlatformView, MethodChannel.MethodCal
      * */
     @Override
     public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
-    if (disposed || activity.hashCode() != registrar.activity().hashCode()) {
-        return;
+        if (disposed || activity.hashCode() != registrar.activity().hashCode()) {
+            return;
+        }
+        navView.onCreate(savedInstanceState);
     }
-    navView.onCreate(savedInstanceState);
-}
 
     @Override
     public void onActivityStarted(Activity activity) {
@@ -208,20 +209,20 @@ public class FlutterAMapNavView implements PlatformView, MethodChannel.MethodCal
 
 
     /*
-    * AMapNaviListener
-    * */
+     * AMapNaviListener
+     * */
 
     @Override
     public void onInitNaviSuccess() {
         if (latlon != null) {
-            int strategy=0;
+            int strategy = 0;
             try {
                 strategy = aMapNav.strategyConvert(true, false, false, false, false);
             } catch (Exception e) {
                 e.printStackTrace();
             }
             final List<NaviLatLng> eList = new ArrayList<NaviLatLng>();
-            NaviLatLng mEndLatlng = new NaviLatLng(latlon.latitude,latlon.longitude);
+            NaviLatLng mEndLatlng = new NaviLatLng(latlon.latitude, latlon.longitude);
             eList.add(mEndLatlng);
             aMapNav.calculateDriveRoute(eList, null, strategy);
         }
@@ -408,12 +409,12 @@ public class FlutterAMapNavView implements PlatformView, MethodChannel.MethodCal
     }
 
     /*
-    * AMapNaviViewListener
-    * */
+     * AMapNaviViewListener
+     * */
 
     @Override
     public void onNaviSetting() {
-        navChannel.invokeMethod("more_nav",null);
+        navChannel.invokeMethod("more_nav", null);
     }
 
     @Override
@@ -423,7 +424,7 @@ public class FlutterAMapNavView implements PlatformView, MethodChannel.MethodCal
 
     @Override
     public boolean onNaviBackClick() {
-        navChannel.invokeMethod("close_nav",null);
+        navChannel.invokeMethod("close_nav", null);
         return true;
     }
 

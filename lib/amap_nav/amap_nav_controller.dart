@@ -13,18 +13,30 @@ class AMapNavController {
   final MethodChannel _navChannel;
   final NavCloseHandler onCloseHandler;
   final NavMoreHandler onMoreHandler;
+  final MethodChannel _componentChannel;
 
-  AMapNavController.viewId({
-    @required int viewId,
+  AMapNavController({
+    int viewId,
     this.onCloseHandler,
     this.onMoreHandler,
-  }) : _navChannel = MethodChannel('$_navChannelPrefix/$viewId');
+  })  : _navChannel = MethodChannel('$_navChannelPrefix/$viewId'),
+        _componentChannel = MethodChannel('$_navChannelPrefix');
 
   Future startAMapNav({
     @required Coordinate coordinate,
   }) {
     return _navChannel
         .invokeMethod('startNav', coordinate.toJsonString())
+        .then((onValue) {
+      return onValue;
+    });
+  }
+
+  Future startComponent({
+    @required Coordinate coordinate,
+  }) {
+    return _componentChannel
+        .invokeMethod('startComponentNav', coordinate.toJsonString())
         .then((onValue) {
       return onValue;
     });

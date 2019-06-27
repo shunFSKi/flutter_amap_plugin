@@ -60,7 +60,7 @@ class AMapNavView extends StatelessWidget {
   }
 
   void _onPlatformViewCreated(int viewId) {
-    var _controller = AMapNavController.viewId(
+    var _controller = AMapNavController(
       viewId: viewId,
       onCloseHandler: onCloseHandler,
       onMoreHandler: onMoreHandler,

@@ -21,4 +21,7 @@ public class AMapNavModel {
 
     ///是否显示更多按钮,默认YES
     boolean showMoreButton;
+
+    ///是否使用导航组件,默认false
+    boolean isUseComponent;
 }

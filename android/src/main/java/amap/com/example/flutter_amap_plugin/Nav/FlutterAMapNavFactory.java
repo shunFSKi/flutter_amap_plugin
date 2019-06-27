@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
+import amap.com.example.flutter_amap_plugin.Nav.Component.FlutterAMapComponentNavView;
 import io.flutter.plugin.common.PluginRegistry;
 import io.flutter.plugin.common.StandardMessageCodec;
 import io.flutter.plugin.platform.PlatformView;
@@ -33,6 +34,7 @@ public class FlutterAMapNavFactory extends PlatformViewFactory {
         FlutterAMapNavView aMapNavView = new FlutterAMapNavView(context, mActivityState, mPluginRegistrar, id, mPluginRegistrar.activity(), model);
 //        aMapNavView.setup();
         return aMapNavView;
+
     }
 }
 

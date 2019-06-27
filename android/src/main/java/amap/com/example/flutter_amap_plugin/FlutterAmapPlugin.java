@@ -5,6 +5,12 @@ import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
 
+import com.amap.api.maps.model.LatLng;
+import com.amap.api.maps.model.Poi;
+import com.amap.api.navi.AmapNaviPage;
+import com.amap.api.navi.AmapNaviParams;
+import com.amap.api.navi.AmapNaviType;
+import com.amap.api.navi.AmapPageType;
 import com.mylhyl.acp.Acp;
 import com.mylhyl.acp.AcpListener;
 import com.mylhyl.acp.AcpOptions;
@@ -17,6 +23,7 @@ import amap.com.example.flutter_amap_plugin.Location.FlutterAMapStartLocation;
 import amap.com.example.flutter_amap_plugin.Location.FlutterAMapStopLocation;
 import amap.com.example.flutter_amap_plugin.Map.FlutterAMapView;
 import amap.com.example.flutter_amap_plugin.Map.FlutterAMapViewFactory;
+import amap.com.example.flutter_amap_plugin.Nav.Component.FlutterAMapComponentNavView;
 import amap.com.example.flutter_amap_plugin.Nav.FlutterAMapNavFactory;
 import amap.com.example.flutter_amap_plugin.Nav.FlutterAMapNavView;
 import amap.com.example.flutter_amap_plugin.Search.FlutterAMapConvertRegister;
@@ -148,6 +155,9 @@ public class FlutterAmapPlugin implements MethodCallHandler {
         convertChannel.setMethodCallHandler(new FlutterAmapPlugin((FlutterActivity) registrar.activity()));
         FlutterAmapPlugin.convertChannel = convertChannel;
 
+        final MethodChannel navChannel = new MethodChannel(registrar.messenger(), FlutterAMapNavView.NAV_CHANNEL_NAME);
+        navChannel.setMethodCallHandler(new FlutterAmapPlugin((FlutterActivity) registrar.activity()));
+
         final FlutterAmapPlugin plugin = new FlutterAmapPlugin(root);
 
         registrar.platformViewRegistry().registerViewFactory(FlutterAMapView.MAP_CHANNEL_NAME,
@@ -183,10 +193,23 @@ public class FlutterAmapPlugin implements MethodCallHandler {
             case "coordinateToGeo":
                 new FlutterAMapConvertRegister().onMethodCall(call, result);
                 break;
+            case "startComponentNav":
+//                initNav();
+                new FlutterAMapComponentNavView(registrar).onMethodCall(call,result);
+                break;
             default:
                 result.notImplemented();
                 break;
         }
+    }
+
+    void initNav() {
+        LatLng p4 = new LatLng(39.773801, 116.368984);//新三余公园(南5环)
+        Poi end = new Poi("新三余公园(南5环)", p4, "");
+//        Poi end = new Poi(null, new LatLng(latlon.latitude, latlon.longitude), "");
+        AmapNaviParams amapNaviParams = new AmapNaviParams(null, null, end, AmapNaviType.DRIVER, AmapPageType.NAVI);
+        amapNaviParams.setUseInnerVoice(true);
+        AmapNaviPage.getInstance().showRouteActivity(FlutterAmapPlugin.root.getApplicationContext(), amapNaviParams, null);
     }
 
     /**

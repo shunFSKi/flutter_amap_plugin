@@ -30,6 +30,9 @@ class AMapNavOptions extends AMapBaseModel {
   ///是否显示更多按钮,默认YES
   final bool showMoreButton;
 
+  ///是否使用导航组件,默认false
+  final bool isUseComponent;
+
   AMapNavOptions({
     this.trackingMode = AMapNavTrackingMode.carNorth,
     this.showUIElements = true,
@@ -38,6 +41,7 @@ class AMapNavOptions extends AMapBaseModel {
     this.showTrafficBar = true,
     this.showBrowseRouteButton = true,
     this.showMoreButton = true,
+    this.isUseComponent = false,
   });
 
   @override
@@ -50,6 +54,7 @@ class AMapNavOptions extends AMapBaseModel {
       'showTrafficBar': showTrafficBar,
       'showBrowseRouteButton': showBrowseRouteButton,
       'showMoreButton': showMoreButton,
+      'isUseComponent': isUseComponent,
     };
   }
 }
