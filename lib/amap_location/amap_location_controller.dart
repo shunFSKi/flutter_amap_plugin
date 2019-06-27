@@ -38,8 +38,10 @@ class AMapLocationController {
         case 'reGeocodeSuccess':
           print(handler.arguments);
           stopLocation();
-          onLocationCallHandler(handler.arguments['address'],
-              handler.arguments['lon'], handler.arguments['lat'], null);
+          if (onLocationCallHandler != null) {
+            onLocationCallHandler(handler.arguments['address'],
+                handler.arguments['lon'], handler.arguments['lat'], null);
+          }
           break;
         default:
       }
