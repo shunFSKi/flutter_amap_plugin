@@ -58,7 +58,7 @@ public class FlutterAMapView implements PlatformView, MethodChannel.MethodCallHa
     private ArrayList<LatLng> positions = new ArrayList<>();
 
     public FlutterAMapView(Context context, AtomicInteger atomicInteger, PluginRegistry.Registrar registrar, int id, AMapMapModel model) {
-        this.context = registrar.activity().getApplicationContext();
+        this.context = context;
         this.atomicInteger = atomicInteger;
         this.registrar = registrar;
         this.options = model;
